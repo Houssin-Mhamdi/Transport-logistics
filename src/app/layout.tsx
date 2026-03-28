@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Unwavering efficiency for high-end enterprise logistics",
 };
 
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,6 +30,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-body bg-background text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container`}>
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
