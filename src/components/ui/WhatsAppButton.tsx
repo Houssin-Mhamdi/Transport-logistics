@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1, rotate: 5 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-8 right-8 z-[9999] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-[#25D366]/40 text-white cursor-pointer group"
+      className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-[#25D366]/40 text-white cursor-pointer group"
       aria-label="Contact us on WhatsApp"
     >
       <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 pointer-events-none group-hover:animate-none" />
