@@ -32,6 +32,7 @@ export interface RoutePlan {
     validUntil: string;
   };
   routeType: 'standard' | 'express' | 'eco';
+  vehicleType?: 'car' | 'transporter' | 'suitcase' | 'suitcase_lift';
   status: 'draft' | 'calculated' | 'booked' | 'active';
 }
 

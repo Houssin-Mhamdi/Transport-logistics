@@ -76,18 +76,58 @@ export const DEFAULT_ROUTE: RoutePlan = {
   estimatedTime: "14h 22m",
   carbonFootprint: 242,
   congestionIndex: 12,
+  vehicleType: "transporter",
   pricing: {
-    ratePerKm: 25.00,
-    baseFee: 150,
-    fuelSurcharge: 312.50,
+    ratePerKm: 0.85, 
+    baseFee: 50,
+    fuelSurcharge: 120, // (1248.5 * 0.85 * 0.12) roughly
     tollFees: 89.00,
-    total: 31764.00, // 1248.5 * 25 + 150 + 312.50 + 89
+    total: 1320.225, // (1248.5 * 0.85) + 50 + 120 + 89
     currency: "EUR",
     validUntil: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
   },
   routeType: "standard",
   status: "draft"
 };
+
+export const VEHICLES = [
+  {
+    id: "car",
+    name: "Car Station Wagon",
+    baseRate: 0.45, 
+    baseFee: 20,
+    icon: "directions_car",
+    capacity: "450 kg",
+    dimensions: "180x110x90 cm"
+  },
+  {
+    id: "transporter",
+    name: "Transporter",
+    baseRate: 0.85,
+    baseFee: 50,
+    icon: "local_shipping",
+    capacity: "1,200 kg",
+    dimensions: "430x180x120 cm"
+  },
+  {
+    id: "suitcase",
+    name: "Suitcase Truck",
+    baseRate: 1.5,
+    baseFee: 120,
+    icon: "shipping",
+    capacity: "3,500 kg",
+    dimensions: "610x240x240 cm"
+  },
+  {
+    id: "suitcase_lift",
+    name: "Suitcase (Lifting Platform)",
+    baseRate: 2.1,
+    baseFee: 200,
+    icon: "expand",
+    capacity: "5,000 kg",
+    dimensions: "Integrated Lift"
+  }
+] as const;
 
 export const ROUTE_TYPES = [
   {
