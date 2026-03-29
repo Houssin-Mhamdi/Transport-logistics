@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import TopContantBar from "./TopContantBar";
+import { phoneNumber } from "@/lib/constants";
 
 interface TopNavBarProps {
   activePage?: "home" | "services" | "route-planner" | "tracking" | "fleet" | "about";
@@ -108,18 +109,18 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
                 {/* Mobile Menu Contact Info */}
                 <div className="px-8 py-4 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900 space-y-3">
                   <a
-                    href="mailto:anfrage@navidex.de"
+                    href="mailto:anfrage@Soysal.de"
                     className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors"
                   >
                     <span className="material-symbols-outlined text-primary dark:text-blue-500">mail</span>
-                    <span className="text-primary dark:text-blue-500 font-semibold">anfrage@navidex.de</span>
+                    <span className="text-primary dark:text-blue-500 font-semibold">anfrage@Soysal.de</span>
                   </a>
                   <a
-                    href="tel:+4922335459590"
+                    href={`tel:${phoneNumber}`}
                     className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors"
                   >
                     <span className="material-symbols-outlined text-primary dark:text-blue-500">phone</span>
-                    <span className="text-primary dark:text-blue-500 font-semibold">(+49) 2233 5459590</span>
+                    <span className="text-primary dark:text-blue-500 font-semibold">{phoneNumber}</span>
                   </a>
                 </div>
 

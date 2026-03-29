@@ -3,6 +3,7 @@ import RouteHero from "@/components/ui/RoutePlanner/RouteHero";
 import { DEFAULT_ROUTE } from "@/lib/constants";
 import TopNavBar from "@/components/ui/TopNavBar";
 import RoutePlannerClientWrapper from "@/components/ui/RoutePlanner/RoutePlannerClientWrapper";
+import Footer from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: "Route Architect | Soysal Logistics",
@@ -20,6 +21,7 @@ export default function RoutePlannerPage() {
       <RouteHero />
       
       <RoutePlannerClientWrapper initialRoute={initialRoute} />
+      <Footer />
     </main>
   );
 }

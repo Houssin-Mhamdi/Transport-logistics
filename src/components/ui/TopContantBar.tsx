@@ -1,4 +1,4 @@
-import React from 'react'
+import { phoneNumber } from '@/lib/constants'
 
 function TopContantBar() {
     return (
@@ -17,11 +17,11 @@ function TopContantBar() {
 
                         {/* Email */}
                         <a
-                            href="mailto:anfrage@navidex.de"
+                            href="mailto:anfrage@Soysal.de"
                             className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors group"
                         >
                             <span className="material-symbols-outlined text-base group-hover:scale-110 transition-transform">mail</span>
-                            <span className="text-primary dark:text-blue-500 font-semibold">anfrage@navidex.de</span>
+                            <span className="text-primary dark:text-blue-500 font-semibold">anfrage@Soysal.de</span>
                         </a>
 
                         {/* Divider */}
@@ -29,12 +29,12 @@ function TopContantBar() {
 
                         {/* Phone/WhatsApp */}
                         <a
-                            href="tel:+4922335459590"
+                            href={`tel:${phoneNumber}`}
                             className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors group hidden lg:flex"
                         >
                             <span className="material-symbols-outlined text-base group-hover:scale-110 transition-transform">phone</span>
                             <span>Telefon / Whatsapp:</span>
-                            <span className="text-primary dark:text-blue-500 font-semibold">(+49) 2233 5459590</span>
+                            <span className="text-primary dark:text-blue-500 font-semibold">{phoneNumber}</span>
                         </a>
                     </div>
                 </div>
@@ -52,14 +52,14 @@ function TopContantBar() {
                         {/* Contact Icons */}
                         <div className="flex items-center gap-3">
                             <a
-                                href="mailto:anfrage@navidex.de"
+                                href="mailto:anfrage@Soysal.de"
                                 className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-500/10 text-primary dark:text-blue-500 hover:bg-primary/20 dark:hover:bg-blue-500/20 transition-colors"
                                 aria-label="Email"
                             >
                                 <span className="material-symbols-outlined text-sm">mail</span>
                             </a>
                             <a
-                                href="tel:+4922335459590"
+                                href={`tel:${phoneNumber}`}
                                 className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-500/10 text-primary dark:text-blue-500 hover:bg-primary/20 dark:hover:bg-blue-500/20 transition-colors"
                                 aria-label="Phone"
                             >

@@ -15,7 +15,7 @@ export default function PricingCard({ route, onBook, onVehicleChange }: PricingC
   const currentVehicle = VEHICLES.find(v => v.id === route.vehicleType) || VEHICLES[1];
 
   return (
-    <div className="bg-primary-container p-8 rounded-xl text-on-primary-container shadow-xl relative overflow-hidden h-full flex flex-col">
+    <div className="bg-primary-container p-8 rounded-xl text-on-primary-container shadow-xl relative overflow-hidden  flex flex-col">
       {/* Decorative Icon */}
       <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
         <span className="material-symbols-outlined text-9xl">payments</span>

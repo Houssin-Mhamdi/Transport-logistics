@@ -17,7 +17,7 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
   const [route, setRoute] = useState<RoutePlan>(initialRoute);
   const [isLodingRoute, setIsLoadingRoute] = useState(false);
 
-  console.log("route", route);
+
   // Pricing calculation helper
   const calculatePricing = (distance: number, vehicleId: string) => {
     const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1]; // fallback to transporter
