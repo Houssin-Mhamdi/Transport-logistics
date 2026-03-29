@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Transpro Logistics | Precision in Motion",
+  title: "Soysal Logistics | Precision in Motion",
   description: "Unwavering efficiency for high-end enterprise logistics",
 };
 

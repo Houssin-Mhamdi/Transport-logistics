@@ -5,7 +5,7 @@ import TopNavBar from "@/components/ui/TopNavBar";
 import RoutePlannerClientWrapper from "@/components/ui/RoutePlanner/RoutePlannerClientWrapper";
 
 export const metadata: Metadata = {
-  title: "Route Architect | Transpro Logistics",
+  title: "Route Architect | Soysal Logistics",
   description: "Define complex logistical flows with mathematical certainty",
 };
 

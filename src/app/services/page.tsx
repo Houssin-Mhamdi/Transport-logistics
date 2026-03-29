@@ -8,7 +8,7 @@ import ServicesCTA from "@/components/ui/ServicesPage/ServicesCTA";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Services | Transpro Logistics",
+  title: "Services | Soysal Logistics",
   description: "Precision logistics solutions: Air Freight, Ocean Freight, Road Transport & Warehousing",
 };
 

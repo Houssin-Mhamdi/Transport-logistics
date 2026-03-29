@@ -6,7 +6,7 @@ export default function TestimonialSection() {
       name: "Sarah Jenkins",
       role: "Operations Manager",
       company: "TechGlobal Inc.",
-      text: "TransPro Logistics completely transformed our supply chain. Their real-time tracking gives us peace of mind, and their customer support is unparalleled.",
+      text: "Soysal Logistics completely transformed our supply chain. Their real-time tracking gives us peace of mind, and their customer support is unparalleled.",
       image: "/images/testimonials/sarah-jenkins.png",
       initials: "SJ",
       bgColor: "bg-blue-100",

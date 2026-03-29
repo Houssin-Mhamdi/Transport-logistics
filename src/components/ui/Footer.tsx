@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
         {/* Brand */}
         <div className="space-y-6">
-          <div className="text-xl font-bold text-[#003b93] dark:text-white">Transpro</div>
+          <div className="text-xl font-bold text-[#003b93] dark:text-white">Soysal</div>
           <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
             Leading the future of global logistics through precision engineering and technological innovation since 1998.
           </p>
@@ -87,7 +87,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-6 py-6 border-t border-slate-200 dark:border-slate-800">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500 uppercase tracking-widest">
-          <div>© 2024 Transpro Logistics. Precision in Motion.</div>
+          <div>© 2024 Soysal Logistics. Precision in Motion.</div>
           <div className="flex gap-6">
             <span>ISO 9001 Certified</span>
             <span>GDPR Compliant</span>

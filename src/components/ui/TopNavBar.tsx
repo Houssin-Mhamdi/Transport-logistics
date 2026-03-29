@@ -34,7 +34,7 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
             href="/"
             className="text-2xl font-black tracking-tighter text-primary dark:text-blue-500 hover:opacity-80 transition-opacity"
           >
-            Transpro
+            Soysal
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,7 +96,7 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
                 className="fixed top-0 right-0 h-screen w-[280px] bg-white dark:bg-slate-950 z-[101] shadow-2xl lg:hidden flex flex-col"
               >
                 <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 dark:border-slate-900">
-                  <span className="font-black text-xl tracking-tighter text-primary dark:text-blue-500">Transpro</span>
+                  <span className="font-black text-xl tracking-tighter text-primary dark:text-blue-500">Soysal</span>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300"
