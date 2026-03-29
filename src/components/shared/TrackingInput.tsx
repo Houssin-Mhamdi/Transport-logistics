@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function TrackingInput() {
     const [trackingNumber, setTrackingNumber] = useState("");
+    const router = useRouter();
 
     const handleTrack = () => {
-        if (trackingNumber.trim()) {
-            // Implement tracking logic here
-            console.log("Tracking:", trackingNumber);
-        }
+        router.push("/route-planner");
+        // if (trackingNumber.trim()) {
+        //     // Implement tracking logic here
+        //     console.log("Tracking:", trackingNumber);
+        // }
     };
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -30,7 +33,7 @@ export default function TrackingInput() {
                 />
             </div>
             <button
-                className="bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-all"
+                className="bg-primary cursor-pointer text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-all"
                 onClick={handleTrack}
             >
                 Track Now

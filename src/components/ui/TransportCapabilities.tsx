@@ -1,5 +1,6 @@
 "use client";
 
+import { whatsappUrl } from "@/lib/constants";
 import { motion } from "framer-motion";
 
 const capabilities = [
@@ -60,6 +61,9 @@ const capabilities = [
 ];
 
 export default function TransportCapabilities() {
+    const CallWhatsApp = () => {
+        window.open(whatsappUrl, "_blank");
+    };
     return (
         <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
             {/* Decorative Background Elements */}
@@ -160,10 +164,10 @@ export default function TransportCapabilities() {
                         <h4 className="text-2xl font-bold mb-4">Request a custom transport dimension?</h4>
                         <p className="text-slate-400 mb-8 max-w-lg mx-auto">Our logistics network covers everything from standard courier services to heavy machinery transport.</p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <button className="px-8 py-4 bg-primary hover:bg-white hover:text-primary text-white rounded-full font-bold transition-all duration-300">
+                            <button onClick={CallWhatsApp} className="px-8 cursor-pointer py-4 bg-primary hover:bg-white hover:text-primary text-white rounded-full font-bold transition-all duration-300">
                                 Contact Experts
                             </button>
-                            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold transition-all duration-300 border border-white/10">
+                            <button className="px-8 cursor-pointer py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold transition-all duration-300 border border-white/10">
                                 Download Specs
                             </button>
                         </div>

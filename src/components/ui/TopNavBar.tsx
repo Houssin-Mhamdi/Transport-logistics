@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import TopContantBar from "./TopContantBar";
@@ -20,6 +21,7 @@ const navLinks = [
 
 export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -58,7 +60,7 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
             <button className="hidden sm:block text-slate-600 dark:text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-primary transition-colors">
               Login
             </button>
-            <button className="bg-primary hover:bg-primary-hover dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl shadow-primary/20 dark:shadow-blue-500/20 active:scale-95">
+            <button onClick={() => router.push("/route-planner")} className="bg-primary hover:bg-primary-hover cursor-pointer dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl shadow-primary/20 dark:shadow-blue-500/20 active:scale-95">
               Get a Quote
             </button>
 

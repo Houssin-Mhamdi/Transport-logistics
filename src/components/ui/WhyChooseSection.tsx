@@ -21,7 +21,7 @@ const features = [
   },
 ];
 
-const TECH_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuAhnRtaoE2H_LKRDEZmC5-mzF9ZplVQr26DOk8hISvlbmzNrPQ5SM3Gq92_GrLdLplydp8S2zMDclG8ooYW5pjI3gXHYOlvaE5eeyqhqF9H-v6C1BfHPSMx822IcwIQIPa_oBeQfs7Ya2TZg4V8DPNtCM8TjBDOggaSCiGA2quEDtgTvQVlq2ZODSNSMmOSijxk9564EJ4jtgQ7-8fkL_SWj5nrcpodGjc2XuqoBc5-t3BIOuTVuTYLelkVE4qSBTCIwGc3rZcZ2E_D";
+const TECH_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuB91RAE2dNG6Zutjqkb6Znp6h8j7n-5ElvukuwPMz5qjuMpCKCOCtS-cFnWtkljwG-RijXkqu4cFuhjv3swLQzCZuuPX9mSl3tgVQ9x47J3y7aqru2dZxnVUQX6VDtU851EK4Xw8MAfecz0z04oIyYTDM3DNK5kbXtdR5ia86gRqBqxeOI8d1hxzU1_sAI1JC4TdhpsZ1rwf1mRJeDVHaLCptxbwElsBTe5XqJPHKFRxgsKzZfnGXC5MSyokuqs6cEdTyXCuODiVWwf";
 
 export default function WhyChooseSection() {
   return (
@@ -33,7 +33,7 @@ export default function WhyChooseSection() {
             <img
               src={TECH_IMAGE}
               alt="Technology Interface"
-              className="w-full h-[500px] object-cover"
+              className="w-full h-[500px] object-cover center"
             />
           </div>
           {/* Floating Stat */}

@@ -10,7 +10,7 @@ export default function StatsCounter() {
               <div className="text-6xl font-black text-primary tracking-tighter mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm font-bold text-secondary uppercase tracking-widest">
+              <div className="text-sm font-bold text-secondary-container uppercase tracking-widest">
                 {stat.label}
               </div>
             </div>

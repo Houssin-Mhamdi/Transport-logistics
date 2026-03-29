@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface FleetShowcaseProps {
   onSelect?: (vehicleId: 'car' | 'transporter' | 'suitcase' | 'suitcase_lift') => void;
@@ -30,7 +31,7 @@ export default function FleetShowcase({
     },
     viewport: { once: true }
   };
-
+  const router = useRouter();
   return (
     <>
       {/* Hero Section */}
@@ -286,10 +287,10 @@ export default function FleetShowcase({
                 Our intelligent Route Architect is ready to calculate the most efficient path for your chosen vehicle. Save time and reduce costs today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-secondary-container text-on-secondary-container px-10 py-4 rounded-md font-black text-lg shadow-lg active:scale-95 transition-transform">
+                <button onClick={() => router.push('/route-planner')} className="bg-secondary-container cursor-pointer text-on-secondary-container px-10 py-4 rounded-md font-black text-lg shadow-lg active:scale-95 transition-transform">
                   Start Route Planning
                 </button>
-                <button className="border-2 border-primary-fixed text-primary-fixed px-10 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-colors">
+                <button onClick={() => router.push('/contact')} className="border-2 border-primary-fixed cursor-pointer text-primary-fixed px-10 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-colors">
                   Contact Specialist
                 </button>
               </div>
