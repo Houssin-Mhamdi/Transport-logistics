@@ -163,5 +163,5 @@ export const MAP_LAYERS: MapLayer[] = [
   { id: "satellite", name: "Satellite", visible: false, type: "satellite" }
 ];
 
-export const phoneNumber = "+21629328188";
+export const phoneNumber = "+4922346816746";
 export const whatsappUrl = `https://wa.me/${phoneNumber}`;
