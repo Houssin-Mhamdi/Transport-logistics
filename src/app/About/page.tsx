@@ -1,5 +1,6 @@
 "use client";
 
+
 import Footer from "@/components/ui/Footer";
 import TopNavBar from "@/components/ui/TopNavBar";
 import { motion, Variants } from "framer-motion";
