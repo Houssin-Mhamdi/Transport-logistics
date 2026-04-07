@@ -1,29 +1,33 @@
-const features = [
-  {
-    icon: "biotech",
-    title: "AI Routing",
-    description: "Proprietary algorithms that minimize delays by predicting weather and traffic patterns.",
-  },
-  {
-    icon: "shield_with_heart",
-    title: "Safety First",
-    description: "Multi-layered security protocols ensuring 0% cargo loss rate over the last decade.",
-  },
-  {
-    icon: "public",
-    title: "Global Network",
-    description: "140+ international hubs providing seamless cross-border logistical support.",
-  },
-  {
-    icon: "eco",
-    title: "Eco-Logistics",
-    description: "Committed to carbon-neutral operations by 2035 with our green-fleet initiative.",
-  },
-];
+import { useTranslations } from 'next-intl';
 
 const TECH_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuB91RAE2dNG6Zutjqkb6Znp6h8j7n-5ElvukuwPMz5qjuMpCKCOCtS-cFnWtkljwG-RijXkqu4cFuhjv3swLQzCZuuPX9mSl3tgVQ9x47J3y7aqru2dZxnVUQX6VDtU851EK4Xw8MAfecz0z04oIyYTDM3DNK5kbXtdR5ia86gRqBqxeOI8d1hxzU1_sAI1JC4TdhpsZ1rwf1mRJeDVHaLCptxbwElsBTe5XqJPHKFRxgsKzZfnGXC5MSyokuqs6cEdTyXCuODiVWwf";
 
 export default function WhyChooseSection() {
+  const t = useTranslations('WhyChooseSection');
+
+  const features = [
+    {
+      icon: "biotech",
+      title: t('features.ai_routing.title'),
+      description: t('features.ai_routing.description'),
+    },
+    {
+      icon: "shield_with_heart",
+      title: t('features.safety.title'),
+      description: t('features.safety.description'),
+    },
+    {
+      icon: "public",
+      title: t('features.network.title'),
+      description: t('features.network.description'),
+    },
+    {
+      icon: "eco",
+      title: t('features.eco.title'),
+      description: t('features.eco.description'),
+    },
+  ];
+
   return (
     <section className="py-24 bg-surface-container-low overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -38,9 +42,9 @@ export default function WhyChooseSection() {
           </div>
           {/* Floating Stat */}
           <div className="absolute top-10 -right-10 z-20 bg-secondary-container p-6 rounded-xl shadow-xl text-white">
-            <div className="text-4xl font-black">25+</div>
+            <div className="text-4xl font-black">{t('stat.value')}</div>
             <div className="text-xs uppercase font-bold tracking-widest opacity-80">
-              Years Excellence
+              {t('stat.label')}
             </div>
           </div>
         </div>
@@ -49,10 +53,12 @@ export default function WhyChooseSection() {
         <div className="space-y-8">
           <div className="space-y-4">
             <h2 className="text-4xl font-extrabold text-primary tracking-tight">
-              Engineered for <br />Absolute Reliability
+              {t.rich('header.title', {
+                br: (chunks) => <><br />{chunks}</>
+              })}
             </h2>
             <p className="text-on-surface-variant leading-relaxed">
-              We don&apos;t just deliver packages; we manage the lifecycle of your supply chain through advanced predictive technology and local expertise.
+              {t('header.description')}
             </p>
           </div>
 
@@ -72,4 +78,4 @@ export default function WhyChooseSection() {
       </div>
     </section>
   );
-}
+}

@@ -31,6 +31,39 @@
     "placeholder": "Sendungsnummer eingeben",
     "button": "Jetzt verfolgen"
   },
+  "ServicesGrid": {
+    "header": {
+      "title": "Kernpfeiler der Logistik",
+      "description": "Maßgeschneiderte Transportlösungen, entwickelt für Zuverlässigkeit, Geschwindigkeit und absolute Sicherheit Ihrer Güter in jedem Medium.",
+      "view_all": "Alle Dienstleistungen ansehen"
+    },
+    "services": {
+      "air": {
+        "title": "Luftfracht",
+        "description": "Priorisierte Luftlogistik für zeitkritische Fracht mit Echtzeit-Luftraumüberwachung.",
+        "features": [
+          "Express-Lieferung",
+          "Globale Reichweite"
+        ]
+      },
+      "ocean": {
+        "title": "Seefracht",
+        "description": "Optimierte Seerouten für großvolumige globale Verteilung und nachhaltigen Versand.",
+        "features": [
+          "FCL / LCL Optionen",
+          "Hafen-zu-Tür"
+        ]
+      },
+      "road": {
+        "title": "Straßentransport",
+        "description": "Adaptive terrestrische Flottensteuerung mit spezialisierter Abwicklung für industrielle Anforderungen.",
+        "features": [
+          "Last-Mile-Experten",
+          "Temperaturkontrolle"
+        ]
+      }
+    }
+  },
   "TransportCapabilities": {
     "badge": "Zuverlässige Transportlösungen",
     "title_main": "Wir transportieren das",
@@ -58,6 +91,179 @@
       "title": "Nutzlast-Kraftpaket",
       "min": "Min.",
       "max": "Max."
+    }
+  },
+  "WhyChooseSection": {
+    "header": {
+      "title": "Entwickelt für <br></br>absolute Zuverlässigkeit",
+      "description": "Wir liefern nicht nur Pakete; wir verwalten den Lebenszyklus Ihrer Lieferkette durch fortschrittliche prädiktive Technologie und lokales Fachwissen."
+    },
+    "stat": {
+      "value": "25+",
+      "label": "Jahre Exzellenz"
+    },
+    "features": {
+      "ai_routing": {
+        "title": "KI-Routing",
+        "description": "Proprietäre Algorithmen, die Verzögerungen minimieren, indem sie Wetter- und Verkehrsmuster vorhersagen."
+      },
+      "safety": {
+        "title": "Sicherheit zuerst",
+        "description": "Mehrschichtige Sicherheitsprotokolle, die in den letzten zehn Jahren eine Frachtverlustrate von 0 % gewährleisten."
+      },
+      "network": {
+        "title": "Globales Netzwerk",
+        "description": "Über 140 internationale Hubs für eine nahtlose grenzüberschreitende logistische Unterstützung."
+      },
+      "eco": {
+        "title": "Öko-Logistik",
+        "description": "Verpflichtet zu klimaneutralen Abläufen bis 2035 mit unserer Green-Fleet-Initiative."
+      }
+    }
+  },
+  "FleetShowcase": {
+    "hero": {
+      "title": "Präzisionsflotte für jede Anforderung",
+      "description": "Wählen Sie aus unserem architektonisch vielfältigen Angebot an Transportlösungen. Von schnellen Kurieren für den Innenstadtbereich bis hin zu Schwerlast-Hebebühnen ist unsere Flotte auf absolute Zuverlässigkeit ausgelegt.",
+      "badge": "Fortschrittliche Logistik"
+    },
+    "vehicles": {
+      "car": {
+        "type": "Schnellzustellung",
+        "name": "PKW Kombi",
+        "description": "Optimiert für dringende Dokumententransfers und kleine Paketsendungen im Stadtgebiet.",
+        "payload": "Bis zu 450 kg Nutzlast",
+        "dimensions": "180cm x 110cm x 90cm"
+      },
+      "transporter": {
+        "type": "Mittelklasse",
+        "name": "Transporter",
+        "description": "Ideal für mittelschwere innerstädtische Lieferungen und Einzelhandels-Distributionszyklen.",
+        "payload": "Bis zu 1.200 kg Nutzlast",
+        "dimensions": "430cm x 180cm x 120cm"
+      },
+      "suitcase": {
+        "type": "Schwerlast",
+        "name": "Kofferfahrzeug",
+        "description": "Hartschalen-Frachtschutz für überregionale Logistik und empfindliche Industrieanlagen.",
+        "payload": "Bis zu 3.500 kg Nutzlast",
+        "dimensions": "610cm x 240cm x 240cm"
+      },
+      "suitcase_lift": {
+        "type": "Szialisiert",
+        "name": "Koffer mit Hebebühne",
+        "description": "Ausgestattet mit hydraulischem Lift für das nahtlose Verladen von schweren Maschinen ohne Rampenzugang.",
+        "payload": "Bis zu 5.000 kg Nutzlast",
+        "extra": "Integrierte Hebebühne"
+      }
+    },
+    "buttons": {
+      "select": "Fahrzeug wählen",
+      "selected": "Ausgewählt",
+      "specs": "Details ansehen"
+    },
+    "advantage": {
+      "title": "Der Soysal-Vorteil",
+      "features": {
+        "tracking": {
+          "title": "Echtzeit-Tracking",
+          "description": "Präzise Telemetriedaten für jedes Fahrzeug, damit Sie Ihre Fracht sekundengenau überwachen können."
+        },
+        "eco": {
+          "title": "Umweltfreundliche Optionen",
+          "description": "Verpflichtet zu nachhaltiger Logistik mit unserer wachsenden Flotte von Elektro-Transportern."
+        },
+        "drivers": {
+          "title": "Professionelle Fahrer",
+          "description": "Unsere Fahrer sind geschulte Präzisionsspezialisten, die Sicherheit und Integrität Ihrer Sendungen gewährleisten."
+        }
+      }
+    },
+    "cta": {
+      "title": "Bereit zum Buchen? Planen wir Ihre Route",
+      "description": "Unser intelligenter Routen-Architekt ist bereit, den effizientesten Weg für Ihr gewähltes Fahrzeug zu berechnen.",
+      "plan_btn": "Routenplanung starten",
+      "contact_btn": "Spezialisten kontaktieren"
+    }
+  },
+  "TestimonialSection": {
+    "header": {
+      "badge": "Kundenstimmen",
+      "title": "Vertrauen von Marktführern",
+      "description": "Verlassen Sie sich nicht nur auf unser Wort. Das sagen unsere Partner über die Zusammenarbeit mit uns."
+    },
+    "testimonials": {
+      "sarah": {
+        "name": "Sarah Jenkins",
+        "role": "Betriebsleiterin",
+        "company": "TechGlobal Inc.",
+        "text": "Soysal Logistics hat unsere Lieferkette komplett transformiert. Ihr Echtzeit-Tracking gibt uns Sicherheit, und ihr Kundensupport ist beispiellos."
+      },
+      "david": {
+        "name": "David Chen",
+        "role": "CEO",
+        "company": "Peak Retail",
+        "text": "Wir brauchten einen zuverlässigen Partner für internationale Sendungen, und sie haben unsere Erwartungen übertroffen. Schnell, sicher und transparent von Anfang bis Ende."
+      },
+      "maria": {
+        "name": "Maria Rodriguez",
+        "role": "Logistikdirektorin",
+        "company": "FastMart",
+        "text": "Die Effizienz ihres Lager- und Vertriebsnetzes hat uns geholfen, die Kosten um 20 % zu senken. Ich kann ihre umfassenden Frachtlösungen wärmstens empfehlen."
+      }
+    }
+  },
+  "StatsBanner": {
+    "cargo": {
+      "value": "12M+",
+      "label": "Ausgelieferte Fracht"
+    },
+    "locations": {
+      "value": "140+",
+      "label": "Globale Standorte"
+    },
+    "clients": {
+      "value": "3.500+",
+      "label": "Industriekunden"
+    },
+    "support": {
+      "value": "24/7",
+      "label": "Experten-Support"
+    }
+  },
+  "Footer": {
+    "brand": {
+      "description": "Führend in der Zukunft der globalen Logistik durch Präzisionstechnik und technologische Innovation seit 1998."
+    },
+    "sections": {
+      "quick_links": {
+        "title": "Schnellzugriff",
+        "links": [
+          "Leistungsportfolio",
+          "Globale Standorte",
+          "Frachtführer-Portal",
+          "Tracking-Portal"
+        ]
+      },
+      "support": {
+        "title": "Support",
+        "links": [
+          "Support-Center",
+          "Datenschutzrichtlinie",
+          "Nutzungsbedingungen",
+          "Nachhaltigkeit"
+        ]
+      },
+      "newsletter": {
+        "title": "Newsletter",
+        "description": "Abonnieren Sie Logistik-Einblicke und Updates zum Welthandel.",
+        "placeholder": "E-Mail-Adresse"
+      }
+    },
+    "bottom": {
+      "copyright": "© 2024 Soysal Logistics. Präzision in Bewegung.",
+      "iso": "ISO 9001 zertifiziert",
+      "gdpr": "GDPR-konform"
     }
   }
 }

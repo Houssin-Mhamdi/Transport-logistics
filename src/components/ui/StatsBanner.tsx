@@ -1,11 +1,15 @@
-const stats = [
-  { value: "12M+", label: "Delivered Cargo" },
-  { value: "140+", label: "Global Locations" },
-  { value: "3,500+", label: "Industry Clients" },
-  { value: "24/7", label: "Expert Support" },
-];
+import { useTranslations } from 'next-intl';
 
 export default function StatsBanner() {
+  const t = useTranslations('StatsBanner');
+
+  const stats = [
+    { value: t('cargo.value'), label: t('cargo.label') },
+    { value: t('locations.value'), label: t('locations.label') },
+    { value: t('clients.value'), label: t('clients.label') },
+    { value: t('support.value'), label: t('support.label') },
+  ];
+
   return (
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">

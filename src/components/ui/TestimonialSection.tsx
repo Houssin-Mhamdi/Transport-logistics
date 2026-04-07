@@ -1,12 +1,15 @@
+import { useTranslations } from 'next-intl';
 
 export default function TestimonialSection() {
+  const t = useTranslations('TestimonialSection');
+
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Jenkins",
-      role: "Operations Manager",
-      company: "TechGlobal Inc.",
-      text: "Soysal Logistics completely transformed our supply chain. Their real-time tracking gives us peace of mind, and their customer support is unparalleled.",
+      name: t('testimonials.sarah.name'),
+      role: t('testimonials.sarah.role'),
+      company: t('testimonials.sarah.company'),
+      text: t('testimonials.sarah.text'),
       image: "/images/testimonials/sarah-jenkins.png",
       initials: "SJ",
       bgColor: "bg-blue-100",
@@ -14,10 +17,10 @@ export default function TestimonialSection() {
     },
     {
       id: 2,
-      name: "David Chen",
-      role: "CEO",
-      company: "Peak Retail",
-      text: "We needed a reliable partner to handle international shipments, and they exceeded our expectations. Fast, safe, and transparent from start to finish.",
+      name: t('testimonials.david.name'),
+      role: t('testimonials.david.role'),
+      company: t('testimonials.david.company'),
+      text: t('testimonials.david.text'),
       image: "/images/testimonials/david-chen.png",
       initials: "DC",
       bgColor: "bg-emerald-100",
@@ -25,10 +28,10 @@ export default function TestimonialSection() {
     },
     {
       id: 3,
-      name: "Maria Rodriguez",
-      role: "Logistics Director",
-      company: "FastMart",
-      text: "The efficiency of their warehousing and distribution network has helped us cut costs by 20%. I highly recommend their comprehensive freight solutions.",
+      name: t('testimonials.maria.name'),
+      role: t('testimonials.maria.role'),
+      company: t('testimonials.maria.company'),
+      text: t('testimonials.maria.text'),
       image: "/images/testimonials/maria-rodriguez.png",
       initials: "MR",
       bgColor: "bg-amber-100",
@@ -41,13 +44,13 @@ export default function TestimonialSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <span className="text-blue-600 dark:text-blue-400 font-semibold tracking-wider uppercase text-sm">
-            Client Stories
+            {t('header.badge')}
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Trusted by Industry Leaders
+            {t('header.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
-            Don't just take our word for it. Here's what our partners have to say about working with us.
+            {t('header.description')}
           </p>
         </div>
 
@@ -71,7 +74,7 @@ export default function TestimonialSection() {
               </div>
 
               <div className="flex items-center mt-auto">
-                <div className={`w-12 h-12 rounded-full ${testimonial.bgColor} ${testimonial.textColor} flex-shrink-0 flex items-center justify-center font-bold text-lg overflow-hidden border-2 border-white/20 shadow-sm`}>
+                <div className={`w-12 h-12 rounded-full ${testimonial.bgColor} ${testimonial.textColor} shrink-0 flex items-center justify-center font-bold text-lg overflow-hidden border-2 border-white/20 shadow-sm`}>
                   {testimonial.image ? (
                     <img 
                       src={testimonial.image} 

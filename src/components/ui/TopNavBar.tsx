@@ -94,13 +94,13 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={() => setIsLangOpen(false)}
-                      className="fixed inset-0 z-[110]"
+                      className="fixed inset-0 z-110"
                     />
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute right-0 mt-2 w-40 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-2xl z-[111] overflow-hidden p-1.5"
+                      className="absolute right-0 mt-2 w-40 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-2xl z-111 overflow-hidden p-1.5"
                     >
                       {locales.map((l) => (
                         <Link
@@ -157,14 +157,14 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[-1] lg:hidden"
+                className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-101 lg:hidden"
               />
               <motion.div
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed top-0 right-0 h-screen w-[280px] bg-white dark:bg-slate-950 z-[101] shadow-2xl lg:hidden flex flex-col"
+                className="fixed top-0 right-0 h-screen w-[280px] bg-white dark:bg-slate-950 z-101 shadow-2xl lg:hidden flex flex-col"
               >
                 <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 dark:border-slate-900">
                   <span className="font-black text-xl tracking-tighter text-primary dark:text-blue-500">Soysal</span>

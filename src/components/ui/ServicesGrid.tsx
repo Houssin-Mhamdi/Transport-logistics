@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 interface ServiceProps {
   title: string;
@@ -11,38 +12,40 @@ interface ServiceProps {
   decorativeIcon?: string;
 }
 
-const services: ServiceProps[] = [
-  {
-    title: "Air Freight",
-    description: "Priority sky-bound logistics for time-sensitive cargo with real-time aerospace monitoring.",
-    icon: "flight_takeoff",
-    iconBg: "bg-primary-fixed",
-    iconColor: "text-primary",
-    features: ["Express Delivery", "Global Reach"],
-    variant: "light",
-  },
-  {
-    title: "Ocean Freight",
-    description: "Optimized maritime routes for heavy-volume global distribution and sustainable shipping.",
-    icon: "sailing",
-    iconBg: "bg-primary-container",
-    iconColor: "text-white",
-    features: ["FCL / LCL Options", "Port-to-Door"],
-    variant: "dark",
-    decorativeIcon: "anchor",
-  },
-  {
-    title: "Road Freight",
-    description: "Adaptive terrestrial fleet management with specialized handling for industrial requirements.",
-    icon: "local_shipping",
-    iconBg: "bg-primary-fixed",
-    iconColor: "text-primary",
-    features: ["Last Mile Experts", "Temperature Control"],
-    variant: "light",
-  },
-];
-
 export default function ServicesGrid() {
+  const t = useTranslations('ServicesGrid');
+
+  const services: ServiceProps[] = [
+    {
+      title: t('services.air.title'),
+      description: t('services.air.description'),
+      icon: "flight_takeoff",
+      iconBg: "bg-primary-fixed",
+      iconColor: "text-primary",
+      features: t.raw('services.air.features'),
+      variant: "light",
+    },
+    {
+      title: t('services.ocean.title'),
+      description: t('services.ocean.description'),
+      icon: "sailing",
+      iconBg: "bg-primary-container",
+      iconColor: "text-white",
+      features: t.raw('services.ocean.features'),
+      variant: "dark",
+      decorativeIcon: "anchor",
+    },
+    {
+      title: t('services.road.title'),
+      description: t('services.road.description'),
+      icon: "local_shipping",
+      iconBg: "bg-primary-fixed",
+      iconColor: "text-primary",
+      features: t.raw('services.road.features'),
+      variant: "light",
+    },
+  ];
+
   return (
     <section className="py-24 bg-surface grainy-surface">
       <div className="max-w-7xl mx-auto px-6">
@@ -50,17 +53,17 @@ export default function ServicesGrid() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-xl">
             <h2 className="text-4xl font-extrabold text-primary tracking-tight mb-4">
-              Core Logistics Pillars
+              {t('header.title')}
             </h2>
             <p className="text-on-surface-variant leading-relaxed">
-              Tailored transport solutions engineered for reliability, speed, and absolute safety of your assets across every medium.
+              {t('header.description')}
             </p>
           </div>
           <Link
             href="/services"
             className="hidden md:block text-primary font-bold border-b-2 border-secondary-container pb-1 hover:text-secondary transition-colors"
           >
-            View All Services
+            {t('header.view_all')}
           </Link>
         </div>
 
@@ -125,4 +128,4 @@ function ServiceCard({
       )}
     </div>
   );
-}
+}

@@ -31,6 +31,30 @@
     "placeholder": "Enter Tracking Number",
     "button": "Track Now"
   },
+  "ServicesGrid": {
+    "header": {
+      "title": "Core Logistics Pillars",
+      "description": "Tailored transport solutions engineered for reliability, speed, and absolute safety of your assets across every medium.",
+      "view_all": "View All Services"
+    },
+    "services": {
+      "air": {
+        "title": "Air Freight",
+        "description": "Priority sky-bound logistics for time-sensitive cargo with real-time aerospace monitoring.",
+        "features": ["Express Delivery", "Global Reach"]
+      },
+      "ocean": {
+        "title": "Ocean Freight",
+        "description": "Optimized maritime routes for heavy-volume global distribution and sustainable shipping.",
+        "features": ["FCL / LCL Options", "Port-to-Door"]
+      },
+      "road": {
+        "title": "Road Freight",
+        "description": "Adaptive terrestrial fleet management with specialized handling for industrial requirements.",
+        "features": ["Last Mile Experts", "Temperature Control"]
+      }
+    }
+  },
   "TransportCapabilities": {
     "badge": "Reliable Transport Solutions",
     "title_main": "We'll transport",
@@ -58,6 +82,157 @@
       "title": "Payload Powerhouse",
       "min": "Min",
       "max": "Max"
+    }
+  },
+  "WhyChooseSection": {
+    "header": {
+      "title": "Engineered for <br></br>Absolute Reliability",
+      "description": "We don't just deliver packages; we manage the lifecycle of your supply chain through advanced predictive technology and local expertise."
+    },
+    "stat": {
+      "value": "25+",
+      "label": "Years Excellence"
+    },
+    "features": {
+      "ai_routing": {
+        "title": "AI Routing",
+        "description": "Proprietary algorithms that minimize delays by predicting weather and traffic patterns."
+      },
+      "safety": {
+        "title": "Safety First",
+        "description": "Multi-layered security protocols ensuring 0% cargo loss rate over the last decade."
+      },
+      "network": {
+        "title": "Global Network",
+        "description": "140+ international hubs providing seamless cross-border logistical support."
+      },
+      "eco": {
+        "title": "Eco-Logistics",
+        "description": "Committed to carbon-neutral operations by 2035 with our green-fleet initiative."
+      }
+    }
+  },
+  "FleetShowcase": {
+    "hero": {
+      "title": "Precision Fleet for Every Requirement",
+      "description": "Select from our architecturally diverse range of transport solutions. From rapid inner-city couriers to heavy-duty lift platforms, our fleet is engineered for absolute reliability.",
+      "badge": "Advanced Logistics"
+    },
+    "vehicles": {
+      "car": {
+        "type": "Rapid Delivery",
+        "name": "Car Station Wagon",
+        "description": "Optimized for urgent document transfers and small parcel express within metropolitan areas.",
+        "payload": "Up to 450 kg Payload",
+        "dimensions": "180cm x 110cm x 90cm"
+      },
+      "transporter": {
+        "type": "Mid-Range",
+        "name": "Transporter",
+        "description": "Ideal for medium-weight inner-city shipments and retail distribution cycles.",
+        "payload": "Up to 1,200 kg Payload",
+        "dimensions": "430cm x 180cm x 120cm"
+      },
+      "suitcase": {
+        "type": "Heavy Load",
+        "name": "Suitcase",
+        "description": "Hard-shell cargo protection for cross-regional logistics and fragile industrial equipment.",
+        "payload": "Up to 3,500 kg Payload",
+        "dimensions": "610cm x 240cm x 240cm"
+      },
+      "suitcase_lift": {
+        "type": "Specialized",
+        "name": "Suitcase Lifting Platform",
+        "description": "Equipped with hydraulic lift for seamless loading of heavy machinery without dock access.",
+        "payload": "Up to 5,000 kg Payload",
+        "extra": "Integrated Hydraulic Lift"
+      }
+    },
+    "buttons": {
+      "select": "Select Vehicle",
+      "selected": "Selected",
+      "specs": "View Specs"
+    },
+    "advantage": {
+      "title": "The Soysal Advantage",
+      "features": {
+        "tracking": {
+          "title": "Real-time Tracking",
+          "description": "Precise telemetry data for every asset, allowing you to monitor cargo movement with second-by-second accuracy."
+        },
+        "eco": {
+          "title": "Eco-friendly Options",
+          "description": "Committed to sustainable logistics with our expanding fleet of electric transporters and carbon-offset programs."
+        },
+        "drivers": {
+          "title": "Professional Drivers",
+          "description": "Our operators are trained precision specialists ensuring the integrity and security of your shipments at every turn."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Book? Let's Plan Your Route",
+      "description": "Our intelligent Route Architect is ready to calculate the most efficient path for your chosen vehicle. Save time and reduce costs today.",
+      "plan_btn": "Start Route Planning",
+      "contact_btn": "Contact Specialist"
+    }
+  },
+  "TestimonialSection": {
+    "header": {
+      "badge": "Client Stories",
+      "title": "Trusted by Industry Leaders",
+      "description": "Don't just take our word for it. Here's what our partners have to say about working with us."
+    },
+    "testimonials": {
+      "sarah": {
+        "name": "Sarah Jenkins",
+        "role": "Operations Manager",
+        "company": "TechGlobal Inc.",
+        "text": "Soysal Logistics completely transformed our supply chain. Their real-time tracking gives us peace of mind, and their customer support is unparalleled."
+      },
+      "david": {
+        "name": "David Chen",
+        "role": "CEO",
+        "company": "Peak Retail",
+        "text": "We needed a reliable partner to handle international shipments, and they exceeded our expectations. Fast, safe, and transparent from start to finish."
+      },
+      "maria": {
+        "name": "Maria Rodriguez",
+        "role": "Logistics Director",
+        "company": "FastMart",
+        "text": "The efficiency of their warehousing and distribution network has helped us cut costs by 20%. I highly recommend their comprehensive freight solutions."
+      }
+    }
+  },
+  "StatsBanner": {
+    "cargo": { "value": "12M+", "label": "Delivered Cargo" },
+    "locations": { "value": "140+", "label": "Global Locations" },
+    "clients": { "value": "3,500+", "label": "Industry Clients" },
+    "support": { "value": "24/7", "label": "Expert Support" }
+  },
+  "Footer": {
+    "brand": {
+      "description": "Leading the future of global logistics through precision engineering and technological innovation since 1998."
+    },
+    "sections": {
+      "quick_links": {
+        "title": "Quick Links",
+        "links": ["Services Portfolio", "Global Locations", "Carrier Portal", "Tracking Portal"]
+      },
+      "support": {
+        "title": "Support",
+        "links": ["Support Center", "Privacy Policy", "Terms of Service", "Sustainability"]
+      },
+      "newsletter": {
+        "title": "Newsletter",
+        "description": "Subscribe for logistics insights and global trade updates.",
+        "placeholder": "Email Address"
+      }
+    },
+    "bottom": {
+      "copyright": "© 2024 Soysal Logistics. Precision in Motion.",
+      "iso": "ISO 9001 Certified",
+      "gdpr": "GDPR Compliant"
     }
   }
 }
