@@ -24,13 +24,12 @@ export const metadata: Metadata = {
 
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
-export default async function RootLayout({
-  children,
-  params: {locale}
-}: Readonly<{
+export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: {locale: string};
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { children, params } = props;
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
