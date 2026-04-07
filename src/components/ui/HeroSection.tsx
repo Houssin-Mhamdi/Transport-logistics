@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from 'next-intl';
 import TrackingInput from "../shared/TrackingInput";
 
 const HERO_IMAGES = [
@@ -13,6 +14,7 @@ const HERO_IMAGES = [
 ];
 
 export default function HeroSection() {
+  const t = useTranslations('HeroSection');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -53,10 +55,12 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tighter leading-[1.1]">
-            Precision <span className="text-secondary-container">Architects</span> of Global Trade.
+            {t.rich('title', {
+              highlight: (chunks) => <span className="text-secondary-container ">{chunks}</span>
+            })}
           </h1>
           <p className="text-lg text-primary-fixed-dim max-w-lg leading-relaxed">
-            Unwavering efficiency for high-end enterprise logistics. We move the world's most critical cargo with mathematical accuracy.
+            {t('description')}
           </p>
 
           {/* Tracking Input */}
@@ -72,8 +76,8 @@ export default function HeroSection() {
         >
           <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 w-full py-36 px-8 flex flex-col items-center justify-center mx-auto shadow-2xl">
             <div className="text-center">
-              <div className="text-8xl font-black text-secondary-container mb-2">99.9<span className="text-3xl">%</span></div>
-              <p className="text-white font-bold tracking-widest uppercase text-sm">On-Time Precision</p>
+              <div className="text-8xl font-black text-secondary-container mb-2">{t('stats_percentage')}<span className="text-3xl">%</span></div>
+              <p className="text-white font-bold tracking-widest uppercase text-sm">{t('stats_label')}</p>
             </div>
           </div>
 
@@ -86,10 +90,10 @@ export default function HeroSection() {
           >
             <div className="flex items-center mb-3">
               <span className="material-symbols-outlined text-secondary mr-2">verified_user</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-outline">Active Fleet</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-outline">{t('fleet_label')}</span>
             </div>
-            <p className="text-2xl font-bold text-primary">12,450+</p>
-            <p className="text-xs text-outline-variant">Connected carriers globally</p>
+            <p className="text-2xl font-bold text-primary">{t('fleet_count')}</p>
+            <p className="text-xs text-outline-variant">{t('fleet_desc')}</p>
           </motion.div>
         </motion.div>
       </div>

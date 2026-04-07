@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
+import { useTranslations } from 'next-intl';
 
 export default function TrackingInput() {
+    const t = useTranslations('TrackingInput');
     const [trackingNumber, setTrackingNumber] = useState("");
     const router = useRouter();
 
@@ -25,7 +27,7 @@ export default function TrackingInput() {
                 <span className="material-symbols-outlined text-outline mr-3">distance</span>
                 <input
                     className="w-full border-none focus:ring-0 bg-transparent text-on-surface placeholder:text-outline-variant font-medium py-3 outline-none"
-                    placeholder="Enter Tracking Number"
+                    placeholder={t('placeholder')}
                     type="text"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
@@ -36,7 +38,7 @@ export default function TrackingInput() {
                 className="bg-primary cursor-pointer text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-all"
                 onClick={handleTrack}
             >
-                Track Now
+                {t('button')}
             </button>
         </div>
     );

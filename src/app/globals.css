@@ -53,15 +53,16 @@
   --color-on-primary: #ffffff;
   --color-on-error-container: #93000a;
 
-  --font-headline: var(--font-manrope);
-  --font-body: var(--font-inter);
-  --font-label: var(--font-manrope);
+  --font-headline: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Leaflet Map Styles */
 .leaflet-container {
   background: #f3f3f3;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
 }
 
 .leaflet-popup-content-wrapper {

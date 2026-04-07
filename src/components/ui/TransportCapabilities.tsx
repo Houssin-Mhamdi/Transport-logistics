@@ -2,65 +2,65 @@
 
 import { whatsappUrl } from "@/lib/constants";
 import { motion } from "framer-motion";
-
-const capabilities = [
-    {
-        icon: "https://navidex.de/wp-content/uploads/2025/05/Group-78921.svg?x23118",
-        title: "Letters & Parcels to Pallets",
-        description: "From individual documents to industrial pallet shipments—every item treated with premium care.",
-        highlight: "Versatile Fleet",
-        color: "from-blue-600 to-indigo-600",
-        shadow: "shadow-blue-500/10",
-        iconBg: "bg-blue-50 dark:bg-blue-900/20",
-    },
-    {
-        icon: "https://navidex.de/wp-content/uploads/2025/05/noun-ruler-2023045.svg?x23118",
-        title: "Extended Dimensions",
-        description: (
-            <div className="space-y-1">
-                <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-1">
-                    <span className="text-slate-500">Max Length</span>
-                    <span className="font-bold text-primary">480 cm</span>
-                </div>
-                <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-1">
-                    <span className="text-slate-500">Max Width</span>
-                    <span className="font-bold text-primary">230 cm</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-500">Max Height</span>
-                    <span className="font-bold text-primary">240 cm</span>
-                </div>
-            </div>
-        ),
-        highlight: "Space Optimization",
-        color: "from-emerald-600 to-teal-600",
-        shadow: "shadow-emerald-500/10",
-        iconBg: "bg-emerald-50 dark:bg-emerald-900/20",
-    },
-    {
-        icon: "https://navidex.de/wp-content/uploads/2025/05/Group-78923.svg?x23118",
-        title: "Payload Powerhouse",
-        description: (
-            <div className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl">
-                <div className="flex-1 text-center">
-                    <div className="text-xs text-slate-500 uppercase tracking-widest mb-1">Min</div>
-                    <div className="text-lg font-black text-primary font-mono">1 KG</div>
-                </div>
-                <div className="w-px h-8 bg-slate-200 dark:bg-slate-700" />
-                <div className="flex-1 text-center">
-                    <div className="text-xs text-slate-500 uppercase tracking-widest mb-1">Max</div>
-                    <div className="text-lg font-black text-primary font-mono">1,200 KG</div>
-                </div>
-            </div>
-        ),
-        highlight: "Heavy Duty",
-        color: "from-purple-600 to-violet-600",
-        shadow: "shadow-purple-500/10",
-        iconBg: "bg-purple-50 dark:bg-purple-900/20",
-    },
-];
+import { useTranslations } from "next-intl";
 
 export default function TransportCapabilities() {
+    const t = useTranslations("TransportCapabilities");
+
+    const capabilities = [
+        {
+            icon: "https://navidex.de/wp-content/uploads/2025/05/Group-78921.svg?x23118",
+            title: t("versatile_fleet.title"),
+            description: t("versatile_fleet.description"),
+            highlight: t("versatile_fleet.highlight"),
+            shadow: "shadow-blue-500/10",
+            iconBg: "bg-blue-50 dark:bg-blue-900/20",
+        },
+        {
+            icon: "https://navidex.de/wp-content/uploads/2025/05/noun-ruler-2023045.svg?x23118",
+            title: t("space_optimization.title"),
+            description: (
+                <div className="space-y-1">
+                    <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-1">
+                        <span className="text-slate-500">{t("space_optimization.max_length")}</span>
+                        <span className="font-bold text-primary">480 cm</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-800 pb-1">
+                        <span className="text-slate-500">{t("space_optimization.max_width")}</span>
+                        <span className="font-bold text-primary">230 cm</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                        <span className="text-slate-500">{t("space_optimization.max_height")}</span>
+                        <span className="font-bold text-primary">240 cm</span>
+                    </div>
+                </div>
+            ),
+            highlight: t("space_optimization.highlight"),
+            shadow: "shadow-emerald-500/10",
+            iconBg: "bg-emerald-50 dark:bg-emerald-900/20",
+        },
+        {
+            icon: "https://navidex.de/wp-content/uploads/2025/05/Group-78923.svg?x23118",
+            title: t("heavy_duty.title"),
+            description: (
+                <div className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl">
+                    <div className="flex-1 text-center">
+                        <div className="text-xs text-slate-500 uppercase tracking-widest mb-1">{t("heavy_duty.min")}</div>
+                        <div className="text-lg font-black text-primary font-mono">1 KG</div>
+                    </div>
+                    <div className="w-px h-8 bg-slate-200 dark:bg-slate-700" />
+                    <div className="flex-1 text-center">
+                        <div className="text-xs text-slate-500 uppercase tracking-widest mb-1">{t("heavy_duty.max")}</div>
+                        <div className="text-lg font-black text-primary font-mono">1,200 KG</div>
+                    </div>
+                </div>
+            ),
+            highlight: t("heavy_duty.highlight"),
+            shadow: "shadow-purple-500/10",
+            iconBg: "bg-purple-50 dark:bg-purple-900/20",
+        },
+    ];
+
     const CallWhatsApp = () => {
         window.open(whatsappUrl, "_blank");
     };
@@ -83,7 +83,7 @@ export default function TransportCapabilities() {
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6"
                         >
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                            Reliable Transport Solutions
+                            {t("badge")}
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -92,8 +92,8 @@ export default function TransportCapabilities() {
                             transition={{ delay: 0.1 }}
                             className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.9] mb-6"
                         >
-                            We'll transport <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">that for you.</span>
+                            {t("title_main")} <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">{t("title_highlight")}</span>
                         </motion.h2>
                     </div>
                     <motion.div
@@ -104,7 +104,7 @@ export default function TransportCapabilities() {
                         className="max-w-sm lg:text-right"
                     >
                         <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">
-                            No matter the size, weight, or urgency, our high-performance fleet ensures your freight arrives on time, every time.
+                            {t("description")}
                         </p>
                     </motion.div>
                 </div>
@@ -145,7 +145,7 @@ export default function TransportCapabilities() {
 
                             {/* Interactive Arrow */}
                             <div className="mt-10 flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-                                Learn More
+                                {t("learn_more")}
                                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
                             </div>
                         </motion.div>
@@ -161,14 +161,14 @@ export default function TransportCapabilities() {
                 >
                     <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/20 blur-[100px] rounded-full" />
                     <div className="relative z-10 text-center">
-                        <h4 className="text-2xl font-bold mb-4">Request a custom transport dimension?</h4>
-                        <p className="text-slate-400 mb-8 max-w-lg mx-auto">Our logistics network covers everything from standard courier services to heavy machinery transport.</p>
+                        <h4 className="text-2xl font-bold mb-4">{t("cta_title")}</h4>
+                        <p className="text-slate-400 mb-8 max-w-lg mx-auto">{t("cta_desc")}</p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <button onClick={CallWhatsApp} className="px-8 cursor-pointer py-4 bg-primary hover:bg-white hover:text-primary text-white rounded-full font-bold transition-all duration-300">
-                                Contact Experts
+                                {t("cta_contact")}
                             </button>
                             <button className="px-8 cursor-pointer py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold transition-all duration-300 border border-white/10">
-                                Download Specs
+                                {t("cta_download")}
                             </button>
                         </div>
                     </div>

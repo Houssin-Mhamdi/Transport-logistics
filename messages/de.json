@@ -1,0 +1,63 @@
+{
+  "TopNavBar": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "price_calculator": "Preisrechner",
+    "tracking": "Sendungsverfolgung",
+    "fleet": "Flotte",
+    "booking": "Buchen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "client_portal": "Kundenportal"
+  },
+  "LeadershipSection": {
+    "founder_title": "Gründer & Chef Architekt",
+    "subtitle": "Nachricht von unserem Gründer",
+    "title": "Auf einem Fundament aus Präzision und Vertrauen aufgebaut",
+    "quote": "\"In der globalen Logistik gibt es keinen Spielraum für Fehler. Unser Engagement besteht darin, Lieferketten zu entwerfen, die sich mit absoluter Präzision bewegen, angetrieben von dem Vertrauen, das unsere Partner jeden Tag in uns setzen.\"",
+    "description": "Unter der Führung von Marcus Vancroft hat sich Transpro als globaler Standard für Zuverlässigkeit etabliert. Wir glauben, dass jede Sendung ein gegebenes Versprechen darstellt, und unser architektonischer Ansatz stellt sicher, dass diese Versprechen auf jedem Kontinent eingehalten werden.",
+    "standard": "Der Transpro-Standard"
+  },
+  "HeroSection": {
+    "title": "<highlight>Präzisionsarchitekten</highlight> des globalen Handels.",
+    "description": "Unerschütterliche Effizienz für High-End-Unternehmenslogistik. Wir bewegen die kritischste Fracht der Welt mit mathematischer Genauigkeit.",
+    "stats_percentage": "99.9",
+    "stats_label": "Pünktlichkeit & Präzision",
+    "fleet_label": "Aktive Flotte",
+    "fleet_count": "12.450+",
+    "fleet_desc": "Weltweit vernetzte Carrier"
+  },
+  "TrackingInput": {
+    "placeholder": "Sendungsnummer eingeben",
+    "button": "Jetzt verfolgen"
+  },
+  "TransportCapabilities": {
+    "badge": "Zuverlässige Transportlösungen",
+    "title_main": "Wir transportieren das",
+    "title_highlight": "für Sie.",
+    "description": "Egal welche Größe, welches Gewicht oder welche Dringlichkeit, unsere Hochleistungsflotte stellt sicher, dass Ihre Fracht pünktlich ankommt, jedes Mal.",
+    "learn_more": "Mehr erfahren",
+    "cta_title": "Individuelle Transportmaße anfordern?",
+    "cta_desc": "Unser Logistiknetzwerk deckt alles ab, von Standard-Kurierdiensten bis zum Schwerlasttransport.",
+    "cta_contact": "Experten kontaktieren",
+    "cta_download": "Specs herunterladen",
+    "versatile_fleet": {
+      "highlight": "Vielseitige Flotte",
+      "title": "Briefe & Pakete bis Paletten",
+      "description": "Von Einzeldokumenten bis zu Industrie-Palettensendungen – jede Sendung wird mit Sorgfalt behandelt."
+    },
+    "space_optimization": {
+      "highlight": "Platzoptimierung",
+      "title": "Erweiterte Dimensionen",
+      "max_length": "Max. Länge",
+      "max_width": "Max. Breite",
+      "max_height": "Max. Höhe"
+    },
+    "heavy_duty": {
+      "highlight": "Schwerlast",
+      "title": "Nutzlast-Kraftpaket",
+      "min": "Min.",
+      "max": "Max."
+    }
+  }
+}

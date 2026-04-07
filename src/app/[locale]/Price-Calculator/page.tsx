@@ -16,10 +16,10 @@ export default function RoutePlannerPage() {
 
   return (
     <main className="min-h-screen bg-background font-body text-on-surface antialiased">
-      <TopNavBar activePage="route-planner" />
-      
+      <TopNavBar activePage="Price-Calculator" />
+
       <RouteHero />
-      
+
       <RoutePlannerClientWrapper initialRoute={initialRoute} />
       <Footer />
     </main>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,7 +13,7 @@ const inter = Inter({
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-manrope",
   display: "swap",
 });
@@ -22,13 +24,17 @@ export const metadata: Metadata = {
 
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: {locale}
 }: Readonly<{
   children: React.ReactNode;
+  params: {locale: string};
 }>) {
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="light">
+    <html lang={locale} className="light">
       <head>
         <link
           rel="stylesheet"
@@ -36,8 +42,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${manrope.variable} font-body bg-background text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container`}>
-        {children}
-        <WhatsAppButton />
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <WhatsAppButton />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

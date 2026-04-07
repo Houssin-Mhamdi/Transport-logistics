@@ -1,0 +1,63 @@
+{
+  "TopNavBar": {
+    "home": "Home",
+    "services": "Services",
+    "price_calculator": "Price Calculator",
+    "tracking": "Tracking",
+    "fleet": "Fleet",
+    "booking": "Booking",
+    "about": "About",
+    "contact": "Contact",
+    "client_portal": "Client Portal"
+  },
+  "LeadershipSection": {
+    "founder_title": "Founder & Chief Architect",
+    "subtitle": "Message from our Founder",
+    "title": "Built on a Foundation of Precision and Trust",
+    "quote": "\"In global logistics, there is no margin for error. Our commitment is to architect supply chains that move with absolute precision, fueled by the trust our partners place in us every single day.\"",
+    "description": "Under Marcus Vancroft's leadership, Transpro has established itself as the global standard for reliability. We believe that every shipment represents a promise made, and our architectural approach ensures those promises are kept across every continent.",
+    "standard": "The Transpro Standard"
+  },
+  "HeroSection": {
+    "title": "Precision <highlight>Architects</highlight> of Global Trade.",
+    "description": "Unwavering efficiency for high-end enterprise logistics. We move the world's most critical cargo with mathematical accuracy.",
+    "stats_percentage": "99.9",
+    "stats_label": "On-Time Precision",
+    "fleet_label": "Active Fleet",
+    "fleet_count": "12,450+",
+    "fleet_desc": "Connected carriers globally"
+  },
+  "TrackingInput": {
+    "placeholder": "Enter Tracking Number",
+    "button": "Track Now"
+  },
+  "TransportCapabilities": {
+    "badge": "Reliable Transport Solutions",
+    "title_main": "We'll transport",
+    "title_highlight": "that for you.",
+    "description": "No matter the size, weight, or urgency, our high-performance fleet ensures your freight arrives on time, every time.",
+    "learn_more": "Learn More",
+    "cta_title": "Request a custom transport dimension?",
+    "cta_desc": "Our logistics network covers everything from standard courier services to heavy machinery transport.",
+    "cta_contact": "Contact Experts",
+    "cta_download": "Download Specs",
+    "versatile_fleet": {
+      "highlight": "Versatile Fleet",
+      "title": "Letters & Parcels to Pallets",
+      "description": "From individual documents to industrial pallet shipments—every item treated with premium care."
+    },
+    "space_optimization": {
+      "highlight": "Space Optimization",
+      "title": "Extended Dimensions",
+      "max_length": "Max Length",
+      "max_width": "Max Width",
+      "max_height": "Max Height"
+    },
+    "heavy_duty": {
+      "highlight": "Heavy Duty",
+      "title": "Payload Powerhouse",
+      "min": "Min",
+      "max": "Max"
+    }
+  }
+}
