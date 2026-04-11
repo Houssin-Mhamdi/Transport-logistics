@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Link } from "@/i18n/routing";
 
 interface PaymentStepProps {
   data: any;
@@ -251,9 +252,9 @@ export default function PaymentStep({ data, onUpdate, onBack, price }: PaymentSt
                 />
                 <span className="text-sm text-on-surface-variant">
                   I have read and accept the{" "}
-                  <a href="#" className="text-primary hover:underline font-semibold">Terms and Conditions</a>{" "}
+                  <Link href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Terms and Conditions</Link>{" "}
                   and{" "}
-                  <a href="#" className="text-primary hover:underline font-semibold">Privacy Policy</a>.
+                  <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Privacy Policy</Link>.
                 </span>
               </label>
             </div>
