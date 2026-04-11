@@ -232,31 +232,36 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
                   : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
               }`}
             >
-              <div className="flex items-center gap-4">
-                <input
-                  type="radio"
-                  name="vehicle"
-                  checked={data.selectedVehicle === vehicle.id}
-                  onChange={() => {}}
-                  className="w-5 h-5 text-primary"
-                />
-                <div className="text-4xl">{vehicle.image}</div>
+              <div className="flex flex-col md:flex-row md:items-center gap-4 w-full">
+                <div className="flex items-center gap-4">
+                  <input
+                    type="radio"
+                    name="vehicle"
+                    checked={data.selectedVehicle === vehicle.id}
+                    onChange={() => {}}
+                    className="w-5 h-5 text-primary flex-shrink-0"
+                  />
+                  <div className="text-4xl flex-shrink-0">{vehicle.image}</div>
+                </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-lg">{vehicle.name}</h3>
-                  <div className="flex gap-2 mt-1">
+                  <div className="flex flex-wrap gap-2 mt-1">
                     {vehicle.tags.map((tag) => (
                       <span key={tag} className="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-medium rounded">
                         {tag}
-                      </span>
+                       </span>
                     ))}
                   </div>
                   <p className="text-sm text-on-surface-variant mt-2">
                     Max. {vehicle.maxWeight} • {vehicle.dimensions}
                   </p>
                 </div>
-                <div className="text-right">
-                  <p className="text-2xl font-bold text-primary">{getVehiclePrice(vehicle.id, vehicle.price)} €</p>
-                  <p className="text-xs text-on-surface-variant">Netto</p>
+                <div className="md:text-right flex items-center justify-between md:block pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800 w-full md:w-auto">
+                  <span className="text-sm text-on-surface-variant md:hidden">Price</span>
+                  <div>
+                    <p className="text-2xl font-bold text-primary">{getVehiclePrice(vehicle.id, vehicle.price)} €</p>
+                    <p className="text-xs text-on-surface-variant md:text-right text-right">Netto</p>
+                  </div>
                 </div>
               </div>
             </div>
