@@ -216,15 +216,15 @@ export default function BookingPage() {
       
       {/* Progress Stepper */}
       <div className="sticky top-[70px] lg:top-[80px] z-[110] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 py-6">
-        <div className="max-w-7xl mx-auto px-6 overflow-x-auto hide-scrollbar">
-          <div className="flex items-start justify-between relative min-w-max md:min-w-0 md:flex-row gap-4 md:gap-0">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6">
+          <div className="flex items-start justify-between relative w-full flex-row gap-2 md:gap-0">
             {steps.map((step, index) => {
               const currentStepIndex = steps.findIndex((s) => s.id === currentStep);
               const isCompleted = currentStepIndex > index;
               const isCurrent = currentStepIndex === index;
               
               return (
-                <div key={step.id} className="flex flex-col items-center relative flex-1 min-w-[70px] md:min-w-0">
+                <div key={step.id} className="flex flex-col items-center relative flex-1 min-w-0">
                   <button
                     onClick={() => isCompleted && goToStep(step.id)}
                     className={`flex flex-col items-center gap-2 transition-all relative z-10 ${
@@ -282,9 +282,9 @@ export default function BookingPage() {
               {currentStep === "route" && (
                 <motion.div
                   key="route"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <RouteStep
@@ -299,9 +299,9 @@ export default function BookingPage() {
               {currentStep === "shipment" && (
                 <motion.div
                   key="shipment"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <ShipmentStep
@@ -316,9 +316,9 @@ export default function BookingPage() {
               {currentStep === "pickup" && (
                 <motion.div
                   key="pickup"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <PickupStep
@@ -333,9 +333,9 @@ export default function BookingPage() {
               {currentStep === "delivery" && (
                 <motion.div
                   key="delivery"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <DeliveryStep
@@ -350,9 +350,9 @@ export default function BookingPage() {
               {currentStep === "invoice" && (
                 <motion.div
                   key="invoice"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <InvoiceStep
@@ -367,9 +367,9 @@ export default function BookingPage() {
               {currentStep === "payment" && (
                 <motion.div
                   key="payment"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <PaymentStep

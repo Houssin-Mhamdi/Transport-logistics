@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
                     <div className=" dark:bg-slate-900 rounded-3xl p-8 md:p-12   space-y-8 text-on-surface-variant">
                         
                         <div>
-                            <h2 className="text-2xl font-bold text-primary mb-4">1. Information We Collect</h2>
+                                <h2 className="text-2xl font-bold text-primary mb-4">1. Information We Collect</h2>
                             <p className="leading-relaxed mb-4">
                                 At Transpro Logistics, we respect your privacy and are committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR) and other applicable privacy laws.
                             </p>
