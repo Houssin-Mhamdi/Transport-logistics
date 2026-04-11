@@ -15,12 +15,16 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
     const [pickupTimeFrom, setPickupTimeFrom] = useState("08:00");
     const [pickupTimeTo, setPickupTimeTo] = useState("09:00");
 
-    const isFormComplete = data.pickupContact?.firstName &&
+    const cityValue = data.pickupDetails?.city || "Berlin";
+    
+    const isFormComplete = !!(
+        data.pickupContact?.firstName &&
         data.pickupContact?.lastName &&
-        data.pickupAddress?.street &&
-        data.pickupAddress?.number &&
-        data.pickupAddress?.postalCode &&
-        data.pickupAddress?.city;
+        data.pickupDetails?.street &&
+        data.pickupDetails?.number &&
+        data.pickupDetails?.postalCode &&
+        cityValue
+    );
 
     return (
         <div className="max-w-4xl mx-auto">
@@ -111,9 +115,9 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                                         placeholder="Street *"
                                         required
                                         className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                        value={data.pickupAddress?.street || ""}
+                                        value={data.pickupDetails?.street || ""}
                                         onChange={(e) => onUpdate({
-                                            pickupAddress: { ...data.pickupAddress, street: e.target.value }
+                                            pickupDetails: { ...data.pickupDetails, street: e.target.value }
                                         })}
                                     />
                                 </div>
@@ -123,9 +127,9 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                                         placeholder="No. *"
                                         required
                                         className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                        value={data.pickupAddress?.number || ""}
+                                        value={data.pickupDetails?.number || ""}
                                         onChange={(e) => onUpdate({
-                                            pickupAddress: { ...data.pickupAddress, number: e.target.value }
+                                            pickupDetails: { ...data.pickupDetails, number: e.target.value }
                                         })}
                                     />
                                 </div>
@@ -138,9 +142,9 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                                         placeholder="Postal Code *"
                                         required
                                         className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                        value={data.pickupAddress?.postalCode || ""}
+                                        value={data.pickupDetails?.postalCode || ""}
                                         onChange={(e) => onUpdate({
-                                            pickupAddress: { ...data.pickupAddress, postalCode: e.target.value }
+                                            pickupDetails: { ...data.pickupDetails, postalCode: e.target.value }
                                         })}
                                     />
                                 </div>
@@ -149,9 +153,9 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                                         type="text"
                                         placeholder="City"
                                         className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                        value={data.pickupAddress?.city || "Berlin"}
+                                        value={data.pickupDetails?.city || "Berlin"}
                                         onChange={(e) => onUpdate({
-                                            pickupAddress: { ...data.pickupAddress, city: e.target.value }
+                                            pickupDetails: { ...data.pickupDetails, city: e.target.value }
                                         })}
                                     />
                                 </div>
@@ -160,9 +164,9 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                             <div className="mb-4">
                                 <select
                                     className="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-sm"
-                                    value={data.pickupAddress?.country || "DE"}
+                                    value={data.pickupDetails?.country || "DE"}
                                     onChange={(e) => onUpdate({
-                                        pickupAddress: { ...data.pickupAddress, country: e.target.value }
+                                        pickupDetails: { ...data.pickupDetails, country: e.target.value }
                                     })}
                                 >
                                     <option value="DE">🇩🇪 Germany</option>
