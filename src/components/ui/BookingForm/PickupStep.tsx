@@ -267,6 +267,85 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                 )}
             </div>
 
+            {/* Extra Pickups */}
+            {data.extraPickups?.map((pickup: any, index: number) => {
+                const details = pickup.details || {};
+                const updateDetails = (updates: any) => {
+                    const newList = [...data.extraPickups];
+                    newList[index] = { ...newList[index], details: { ...newList[index].details, ...updates } };
+                    onUpdate({ extraPickups: newList });
+                };
+
+                return (
+                    <div key={`extra-pickup-${index}`} className="mt-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <div className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <span className="material-symbols-outlined text-primary text-sm">location_on</span>
+                                </div>
+                                <span className="font-bold">Stop {index + 1}: {pickup.address || 'Address'}</span>
+                            </div>
+                        </div>
+
+                        <div className="p-6 space-y-8">
+                            <div>
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="material-symbols-outlined text-primary text-sm">person</span>
+                                    <h3 className="font-bold">Contact Person</h3>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="First Name"
+                                            className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                                            value={details.firstName || ""}
+                                            onChange={(e) => updateDetails({ firstName: e.target.value })}
+                                        />
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="Last Name"
+                                            className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                                            value={details.lastName || ""}
+                                            onChange={(e) => updateDetails({ lastName: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="material-symbols-outlined text-secondary text-sm">location_on</span>
+                                    <h3 className="font-bold">Exact Address Details</h3>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                    <div className="md:col-span-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Street"
+                                            className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                                            value={details.street || ""}
+                                            onChange={(e) => updateDetails({ street: e.target.value })}
+                                        />
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="No."
+                                            className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                                            value={details.number || ""}
+                                            onChange={(e) => updateDetails({ number: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+
             {/* Navigation Buttons */}
             <div className="flex gap-4 mt-8">
                 <button

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import PlacesAutocomplete from "@/components/forms/PlacesAutocomplete";
+import { VEHICLES } from "@/lib/constants";
 
 interface RouteStepProps {
   data: any;
@@ -52,6 +53,27 @@ const vehicles = [
 export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepProps) {
   const dateInputRef = useRef<HTMLInputElement>(null);
 
+  const getVehiclePrice = (vehicleId: string, fallbackPrice: number) => {
+    if (!data.distance) return fallbackPrice.toFixed(2);
+    
+    const vehicleMap: Record<string, string> = {
+      pkw_kombi: "car",
+      transporter: "transporter",
+      koffer: "suitcase",
+      koffer_hebebuehne: "suitcase_lift"
+    };
+
+    const vId = vehicleMap[vehicleId] || "transporter";
+    const vehicleObj = VEHICLES.find(v => v.id === vId) || VEHICLES[1];
+    
+    const ratePerKm = vehicleObj.baseRate;
+    const baseFee = vehicleObj.baseFee;
+    const fuelSurcharge = (data.distance * ratePerKm) * 0.12; 
+    const tollFees = 89.00; 
+    
+    return ((data.distance * ratePerKm) + baseFee + fuelSurcharge + tollFees).toFixed(2);
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -61,12 +83,15 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
 
       {/* Pickup Section */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">location_on</span>
             <h2 className="text-xl font-bold text-primary">Pickup</h2>
           </div>
-          <button className="px-4 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          <button 
+            onClick={() => onUpdate({ extraPickups: [...(data.extraPickups || []), { address: "" }] })}
+            className="px-4 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
             <span className="material-symbols-outlined text-sm mr-1">add</span>
             Add Another Pickup
           </button>
@@ -75,7 +100,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-semibold mb-2">Start Address</label>
-            <div className="flex gap-2 relative z-50">
+            <div className="flex gap-2 relative" style={{ zIndex: 100 }}>
               <div className="flex-1 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
                 <PlacesAutocomplete
                   value={data.pickupAddress}
@@ -86,17 +111,46 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
               </div>
             </div>
           </div>
+          {data.extraPickups?.map((pickup: any, index: number) => (
+            <div key={`pickup-${index}`}>
+               <label className="block text-sm font-semibold mb-2">Stop {index + 1}</label>
+               <div className="flex gap-2 relative" style={{ zIndex: 99 - index }}>
+                  <div className="flex-1 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
+                    <PlacesAutocomplete
+                      value={pickup.address}
+                      onChange={(value, coords) => {
+                         const newPickups = [...data.extraPickups];
+                         newPickups[index] = { address: value, coords };
+                         onUpdate({ extraPickups: newPickups });
+                      }}
+                      placeholder="Enter city or address"
+                      icon="location_on"
+                    />
+                  </div>
+                  <button onClick={() => {
+                     const newPickups = [...data.extraPickups];
+                     newPickups.splice(index, 1);
+                     onUpdate({ extraPickups: newPickups });
+                  }} className="px-3 hover:bg-red-50 text-red-500 rounded-lg border border-slate-200 dark:border-slate-700 transition">
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+               </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Delivery Section */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 relative z-40">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-secondary">near_me</span>
             <h2 className="text-xl font-bold text-secondary">Delivery</h2>
           </div>
-          <button className="px-4 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          <button 
+             onClick={() => onUpdate({ extraDeliveries: [...(data.extraDeliveries || []), { address: "" }] })}
+             className="px-4 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
             <span className="material-symbols-outlined text-sm mr-1">add</span>
             Add Another Delivery
           </button>
@@ -105,7 +159,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-semibold mb-2">Destination Address</label>
-            <div className="flex gap-2">
+            <div className="flex gap-2 relative" style={{ zIndex: 50 }}>
               <div className="flex-1 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
                 <PlacesAutocomplete
                   value={data.deliveryAddress}
@@ -116,6 +170,32 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
               </div>
             </div>
           </div>
+          {data.extraDeliveries?.map((delivery: any, index: number) => (
+            <div key={`delivery-${index}`}>
+               <label className="block text-sm font-semibold mb-2">Delivery Stop {index + 1}</label>
+               <div className="flex gap-2 relative" style={{ zIndex: 49 - index }}>
+                  <div className="flex-1 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
+                    <PlacesAutocomplete
+                      value={delivery.address}
+                      onChange={(value, coords) => {
+                         const newDeliveries = [...data.extraDeliveries];
+                         newDeliveries[index] = { address: value, coords };
+                         onUpdate({ extraDeliveries: newDeliveries });
+                      }}
+                      placeholder="Enter city or address"
+                      icon="near_me"
+                    />
+                  </div>
+                  <button onClick={() => {
+                     const newDeliveries = [...data.extraDeliveries];
+                     newDeliveries.splice(index, 1);
+                     onUpdate({ extraDeliveries: newDeliveries });
+                  }} className="px-3 hover:bg-red-50 text-red-500 rounded-lg border border-slate-200 dark:border-slate-700 transition">
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+               </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -175,7 +255,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-primary">{vehicle.price} €</p>
+                  <p className="text-2xl font-bold text-primary">{getVehiclePrice(vehicle.id, vehicle.price)} €</p>
                   <p className="text-xs text-on-surface-variant">Netto</p>
                 </div>
               </div>

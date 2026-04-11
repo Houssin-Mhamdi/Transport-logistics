@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import RouteStep from "@/components/ui/BookingForm/RouteStep";
+import { VEHICLES } from "@/lib/constants";
 
 import TopNavBar from "@/components/ui/TopNavBar";
 import Footer from "@/components/ui/Footer";
@@ -45,6 +46,9 @@ interface BookingData {
   // Delivery
   deliveryTimeWindow: string;
   deliveryInstructions: string;
+  
+  extraPickups: { address: string; coords?: { lat: number; lng: number } }[];
+  extraDeliveries: { address: string; coords?: { lat: number; lng: number } }[];
   
   // Invoice
   companyName: string;
@@ -95,6 +99,8 @@ export default function BookingPage() {
     pickupInstructions: "",
     deliveryTimeWindow: "any",
     deliveryInstructions: "",
+    extraPickups: [],
+    extraDeliveries: [],
     companyName: "",
     contactName: "",
     email: "",
@@ -116,10 +122,18 @@ export default function BookingPage() {
       const p = bookingData.pickupCoords;
       const d = bookingData.deliveryCoords;
       
-      if (p && d && typeof p.lat === 'number' && typeof d.lat === 'number') {
+      const allCoords = [
+        p,
+        ...(bookingData.extraPickups || []).map((x: any) => x.coords),
+        ...(bookingData.extraDeliveries || []).map((x: any) => x.coords),
+        d
+      ].filter((c) => c && typeof c.lat === 'number');
+
+      if (allCoords.length >= 2) {
         try {
+          const coordsStr = allCoords.map(c => `${c.lng},${c.lat}`).join(';');
           const response = await fetch(
-            `https://router.project-osrm.org/route/v1/driving/${p.lng},${p.lat};${d.lng},${d.lat}?overview=false`
+            `https://router.project-osrm.org/route/v1/driving/${coordsStr}?overview=false`
           );
           const rawData = await response.json();
           if (rawData.routes && rawData.routes[0]) {
@@ -147,7 +161,7 @@ export default function BookingPage() {
     
     const timeoutId = setTimeout(calculateDistance, 800);
     return () => clearTimeout(timeoutId);
-  }, [bookingData.pickupCoords, bookingData.deliveryCoords]);
+  }, [bookingData.pickupCoords, bookingData.deliveryCoords, bookingData.extraPickups, bookingData.extraDeliveries]);
 
   const nextStep = () => {
     const stepIndex = steps.findIndex((s) => s.id === currentStep);
@@ -171,16 +185,24 @@ export default function BookingPage() {
   };
 
   const calculatePriceValue = () => {
-    const basePrice = 50;
-    const distancePrice = bookingData.distance * 0.85;
-    const vehicleMultiplier = {
-      pkw_kombi: 1,
-      transporter: 1.5,
-      koffer: 2,
-      koffer_hebebuehne: 2.5,
-    }[bookingData.selectedVehicle] || 1;
+    if (bookingData.distance === 0) return 0;
     
-    return (basePrice + distancePrice) * vehicleMultiplier;
+    const vehicleMap: Record<string, string> = {
+      pkw_kombi: "car",
+      transporter: "transporter",
+      koffer: "suitcase",
+      koffer_hebebuehne: "suitcase_lift"
+    };
+
+    const vehicleId = vehicleMap[bookingData.selectedVehicle] || "transporter";
+    const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1];
+    
+    const ratePerKm = vehicle.baseRate;
+    const baseFee = vehicle.baseFee;
+    const fuelSurcharge = (bookingData.distance * ratePerKm) * 0.12; 
+    const tollFees = 89.00; 
+    
+    return (bookingData.distance * ratePerKm) + baseFee + fuelSurcharge + tollFees;
   };
 
   const calculatePrice = () => {
@@ -193,16 +215,16 @@ export default function BookingPage() {
       <TopNavBar activePage="Booking" />
       
       {/* Progress Stepper */}
-      <div className="sticky top-[70px] lg:top-[80px] z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 py-6">
+      <div className="sticky top-[70px] lg:top-[80px] z-[110] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 py-6">
         <div className="max-w-7xl mx-auto px-6 overflow-x-auto hide-scrollbar">
-          <div className="flex items-start justify-between relative min-w-[700px]">
+          <div className="flex items-start justify-between relative min-w-max md:min-w-0 md:flex-row gap-4 md:gap-0">
             {steps.map((step, index) => {
               const currentStepIndex = steps.findIndex((s) => s.id === currentStep);
               const isCompleted = currentStepIndex > index;
               const isCurrent = currentStepIndex === index;
               
               return (
-                <div key={step.id} className="flex flex-col items-center relative flex-1">
+                <div key={step.id} className="flex flex-col items-center relative flex-1 min-w-[70px] md:min-w-0">
                   <button
                     onClick={() => isCompleted && goToStep(step.id)}
                     className={`flex flex-col items-center gap-2 transition-all relative z-10 ${

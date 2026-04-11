@@ -45,7 +45,7 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
     <>
       <TopContantBar />
       {/* Main Navigation Bar */}
-      <nav className="sticky top-0 w-full z-[100] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300">
+      <nav className="sticky top-0 w-full z-[120] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:py-5">
           {/* Logo */}
           <Link
