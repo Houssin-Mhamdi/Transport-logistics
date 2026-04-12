@@ -163,5 +163,6 @@ export const MAP_LAYERS: MapLayer[] = [
   { id: "satellite", name: "Satellite", visible: false, type: "satellite" }
 ];
 
-export const phoneNumber = "+4922346816746";
+export const phoneNumber = "+4917620958638";
+export const email = "Soysal-Dienstleistungen@outlook.de";
 export const whatsappUrl = `https://wa.me/${phoneNumber}`;

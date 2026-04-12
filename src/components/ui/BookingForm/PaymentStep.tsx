@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "@/i18n/routing";
+import { phoneNumber, email } from "@/lib/constants";
 
 interface PaymentStepProps {
   data: any;
@@ -296,8 +297,8 @@ export default function PaymentStep({ data, onUpdate, onBack, price }: PaymentSt
           </button>
         </div>
         <div className="text-sm text-on-surface-variant space-y-1">
-          <p>Phone: +49 2233 5459590</p>
-          <p>Email: anfrage@navidex.de</p>
+          <p>Phone: {phoneNumber}</p>
+          <p>Email: {email}</p>
         </div>
         <div className="flex items-center justify-center gap-4 mt-6 text-xs text-slate-400">
           <a href="#" className="hover:text-primary">Imprint</a>

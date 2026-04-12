@@ -21,7 +21,7 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
   // Pricing calculation helper
   const calculatePricing = (distance: number, vehicleId: string) => {
     const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1]; // fallback to transporter
-    const ratePerKm = vehicle.baseRate;
+    const ratePerKm = 1.5; // Fixed rate per km
     const baseFee = vehicle.baseFee;
     const fuelSurcharge = (distance * ratePerKm) * 0.12; // 12% surcharge
     const tollFees = 89.00; // static for now

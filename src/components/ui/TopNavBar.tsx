@@ -5,7 +5,7 @@ import { useRouter, Link, usePathname } from "@/i18n/routing";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import TopContantBar from "./TopContantBar";
-import { phoneNumber } from "@/lib/constants";
+import { phoneNumber, email } from "@/lib/constants";
 
 interface TopNavBarProps {
   activePage?: "home" | "services" | "Price-Calculator" | "tracking" | "fleet" | "about" | "Booking" | "contact";
@@ -179,11 +179,11 @@ export default function TopNavBar({ activePage = "home" }: TopNavBarProps) {
                 {/* Mobile Menu Contact Info */}
                 <div className="px-8 py-4 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900 space-y-3">
                   <a
-                    href="mailto:anfrage@Soysal.de"
+                    href={`mailto:${email}`}
                     className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors"
                   >
                     <span className="material-symbols-outlined text-primary dark:text-blue-500">mail</span>
-                    <span className="text-primary dark:text-blue-500 font-semibold">anfrage@Soysal.de</span>
+                    <span className="text-primary dark:text-blue-500 font-semibold">{email}</span>
                   </a>
                   <a
                     href={`tel:${phoneNumber}`}

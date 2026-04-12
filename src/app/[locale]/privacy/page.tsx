@@ -2,6 +2,7 @@
 
 import TopNavBar from "@/components/ui/TopNavBar";
 import Footer from "@/components/ui/Footer";
+import { email } from "@/lib/constants";
 
 export default function PrivacyPolicy() {
     return (
@@ -69,7 +70,7 @@ export default function PrivacyPolicy() {
                                 Under the GDPR, you have the right to request access to, correction of, or erasure of your personal data. You may also object to the processing of your data or request the transfer of your data to another party.
                             </p>
                             <p className="leading-relaxed">
-                                To exercise these rights or if you have any questions regarding how we handle your data, please contact our Data Protection Officer at <strong>privacy@transpro.com</strong>.
+                                To exercise these rights or if you have any questions regarding how we handle your data, please contact our Data Protection Officer at <strong>{email}</strong>.
                             </p>
                         </div>
 

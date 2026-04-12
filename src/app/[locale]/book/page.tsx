@@ -197,7 +197,7 @@ export default function BookingPage() {
     const vehicleId = vehicleMap[bookingData.selectedVehicle] || "transporter";
     const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1];
     
-    const ratePerKm = vehicle.baseRate;
+    const ratePerKm = 1.5; // Fixed rate per km
     const baseFee = vehicle.baseFee;
     const fuelSurcharge = (bookingData.distance * ratePerKm) * 0.12; 
     const tollFees = 89.00; 

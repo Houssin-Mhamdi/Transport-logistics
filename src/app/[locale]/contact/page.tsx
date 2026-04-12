@@ -1,6 +1,7 @@
 import React from 'react'
 import TopNavBar from '@/components/ui/TopNavBar'
 import Footer from '@/components/ui/Footer'
+import { phoneNumber, email } from '@/lib/constants'
 
 function page() {
     return (
@@ -77,11 +78,11 @@ function page() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <p className="font-label text-xs uppercase tracking-[0.05em] font-bold text-outline mb-1">Phone</p>
-                                            <p className="font-body text-on-surface">+1 (800) 555-TRANS</p>
+                                            <p className="font-body text-on-surface">{phoneNumber}</p>
                                         </div>
                                         <div>
                                             <p className="font-label text-xs uppercase tracking-[0.05em] font-bold text-outline mb-1">Email</p>
-                                            <p className="font-body text-on-surface">hq@transpro.com</p>
+                                            <p className="font-body text-on-surface">{email}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -159,8 +160,8 @@ function page() {
                             </div>
                             <h3 className="font-headline text-xl font-bold text-primary mb-3">Customer Support</h3>
                             <p className="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">24/7 technical and shipment support for active logistics contracts.</p>
-                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href="mailto:support@transpro.com">
-                                support@transpro.com
+                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href={`mailto:${email}`}>
+                                {email}
                                 <span className="material-symbols-outlined text-xs">arrow_forward</span>
                             </a>
                         </div>
@@ -171,8 +172,8 @@ function page() {
                             </div>
                             <h3 className="font-headline text-xl font-bold text-primary mb-3">Media Inquiries</h3>
                             <p className="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Resources for press and official brand assets for publications.</p>
-                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href="mailto:media@transpro.com">
-                                media@transpro.com
+                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href={`mailto:${email}`}>
+                                {email}
                                 <span className="material-symbols-outlined text-xs">arrow_forward</span>
                             </a>
                         </div>
@@ -183,8 +184,8 @@ function page() {
                             </div>
                             <h3 className="font-headline text-xl font-bold text-primary mb-3">Career Center</h3>
                             <p className="font-body text-sm text-on-surface-variant mb-6 leading-relaxed">Join our global team of logistics architects and engineers.</p>
-                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href="mailto:careers@transpro.com">
-                                careers@transpro.com
+                            <a className="font-label text-sm font-bold text-secondary flex items-center gap-2 group-hover:translate-x-2 transition-transform" href={`mailto:${email}`}>
+                                {email}
                                 <span className="material-symbols-outlined text-xs">arrow_forward</span>
                             </a>
                         </div>

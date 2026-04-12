@@ -15,7 +15,7 @@
     "subtitle": "Message from our Founder",
     "title": "Built on a Foundation of Precision and Trust",
     "quote": "\"In global logistics, there is no margin for error. Our commitment is to architect supply chains that move with absolute precision, fueled by the trust our partners place in us every single day.\"",
-    "description": "Under Marcus Vancroft's leadership, Transpro has established itself as the global standard for reliability. We believe that every shipment represents a promise made, and our architectural approach ensures those promises are kept across every continent.",
+    "description": "Under Hussein Soysal's leadership, Transpro has established itself as the global standard for reliability. We believe that every shipment represents a promise made, and our architectural approach ensures those promises are kept across every continent.",
     "standard": "The Transpro Standard"
   },
   "HeroSection": {
@@ -41,17 +41,26 @@
       "air": {
         "title": "Air Freight",
         "description": "Priority sky-bound logistics for time-sensitive cargo with real-time aerospace monitoring.",
-        "features": ["Express Delivery", "Global Reach"]
+        "features": [
+          "Express Delivery",
+          "Global Reach"
+        ]
       },
       "ocean": {
         "title": "Ocean Freight",
         "description": "Optimized maritime routes for heavy-volume global distribution and sustainable shipping.",
-        "features": ["FCL / LCL Options", "Port-to-Door"]
+        "features": [
+          "FCL / LCL Options",
+          "Port-to-Door"
+        ]
       },
       "road": {
         "title": "Road Freight",
         "description": "Adaptive terrestrial fleet management with specialized handling for industrial requirements.",
-        "features": ["Last Mile Experts", "Temperature Control"]
+        "features": [
+          "Last Mile Experts",
+          "Temperature Control"
+        ]
       }
     }
   },
@@ -205,10 +214,22 @@
     }
   },
   "StatsBanner": {
-    "cargo": { "value": "12M+", "label": "Delivered Cargo" },
-    "locations": { "value": "140+", "label": "Global Locations" },
-    "clients": { "value": "3,500+", "label": "Industry Clients" },
-    "support": { "value": "24/7", "label": "Expert Support" }
+    "cargo": {
+      "value": "12M+",
+      "label": "Delivered Cargo"
+    },
+    "locations": {
+      "value": "140+",
+      "label": "Global Locations"
+    },
+    "clients": {
+      "value": "3,500+",
+      "label": "Industry Clients"
+    },
+    "support": {
+      "value": "24/7",
+      "label": "Expert Support"
+    }
   },
   "Footer": {
     "brand": {
@@ -217,11 +238,21 @@
     "sections": {
       "quick_links": {
         "title": "Quick Links",
-        "links": ["Services Portfolio", "Global Locations", "Carrier Portal", "Tracking Portal"]
+        "links": [
+          "Services Portfolio",
+          "Global Locations",
+          "Carrier Portal",
+          "Tracking Portal"
+        ]
       },
       "support": {
         "title": "Support",
-        "links": ["Support Center", "Privacy Policy", "Terms of Service", "Sustainability"]
+        "links": [
+          "Support Center",
+          "Privacy Policy",
+          "Terms of Service",
+          "Sustainability"
+        ]
       },
       "newsletter": {
         "title": "Newsletter",

@@ -179,7 +179,7 @@ export default function About() {
                                 {/* <img alt="CEO" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" data-alt="professional portrait of a confident man in a dark tailored suit against a neutral architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Ar4txeR45f0YpT9a6680AqKF3oMevbZ-Tkde-UOcQT7-eCXKVdMeY2WjA8-LrPwVLrNEOgg_q7GsWSo9i25V-pgZ0_wV67IizQqlLwWr3CfNJLpQtjtsSKiicAcDvrhcd2upsIGGnf6R6OOgZDEH_Y054ZsevwKJTgp3B-8qKZohJ6G5c1V3No1fy-NpNy5MsYYgUNbu49O0I1b1_hosIsoI-QES0lsc98BLu_b4F1bwExJPFFuuUDRSog9DQTTH6lJS9D_dXXwb" /> */}
                                 <img alt="CEO" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" data-alt="professional portrait of a confident man in a dark tailored suit against a neutral architectural background" src="/images/ceo.jpg" />
                             </div>
-                            <h4 className="font-headline text-lg font-bold text-primary group-hover:text-secondary transition-colors">Marcus Vancroft</h4>
+                            <h4 className="font-headline text-lg font-bold text-primary group-hover:text-secondary transition-colors">Hussein Soysal</h4>
                             <p className="font-label text-xs text-secondary-container font-bold tracking-widest mt-1">CHIEF EXECUTIVE OFFICER</p>
                         </motion.div>
                         {/* <!-- Leader 2 --> */}

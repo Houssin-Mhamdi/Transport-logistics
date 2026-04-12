@@ -10,9 +10,9 @@ export default function LeadershipSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative order-2 lg:order-1">
             <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-secondary-container z-10"></div>
-            <img alt="Marcus Vancroft, Founder of Transpro" className="w-full h-[600px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" src="/images/ceo.jpg" />
+            <img alt="Hussein Soysal, Founder of Transpro" className="w-full h-[600px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" src="/images/ceo.jpg" />
             <div className="absolute -bottom-8 -right-8 bg-primary p-10 text-white max-w-xs shadow-xl">
-              <p className="font-headline font-bold text-lg mb-2">Marcus Vancroft</p>
+              <p className="font-headline font-bold text-lg mb-2">Hussein Soysal</p>
               <p className="text-xs font-label uppercase tracking-[0.2em] text-secondary-container">{t('founder_title')}</p>
             </div>
           </div>

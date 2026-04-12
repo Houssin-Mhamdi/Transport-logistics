@@ -1,4 +1,4 @@
-import { phoneNumber } from '@/lib/constants'
+import { phoneNumber, email } from '@/lib/constants'
 
 function TopContantBar() {
     return (
@@ -17,11 +17,11 @@ function TopContantBar() {
 
                         {/* Email */}
                         <a
-                            href="mailto:anfrage@Soysal.de"
+                            href={`mailto:${email}`}
                             className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-blue-500 transition-colors group"
                         >
                             <span className="material-symbols-outlined text-base group-hover:scale-110 transition-transform">mail</span>
-                            <span className="text-primary dark:text-blue-500 font-semibold">anfrage@Soysal.de</span>
+                            <span className="text-primary dark:text-blue-500 font-semibold">{email}</span>
                         </a>
 
                         {/* Divider */}
@@ -52,7 +52,7 @@ function TopContantBar() {
                         {/* Contact Icons */}
                         <div className="flex items-center gap-3">
                             <a
-                                href="mailto:anfrage@Soysal.de"
+                                href={`mailto:${email}`}
                                 className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-500/10 text-primary dark:text-blue-500 hover:bg-primary/20 dark:hover:bg-blue-500/20 transition-colors"
                                 aria-label="Email"
                             >

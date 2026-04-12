@@ -66,7 +66,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
     const vId = vehicleMap[vehicleId] || "transporter";
     const vehicleObj = VEHICLES.find(v => v.id === vId) || VEHICLES[1];
     
-    const ratePerKm = vehicleObj.baseRate;
+    const ratePerKm = 1.5; // Fixed rate per km
     const baseFee = vehicleObj.baseFee;
     const fuelSurcharge = (data.distance * ratePerKm) * 0.12; 
     const tollFees = 89.00; 
