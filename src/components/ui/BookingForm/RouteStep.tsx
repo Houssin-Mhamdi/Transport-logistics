@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import PlacesAutocomplete from "@/components/forms/PlacesAutocomplete";
 import { VEHICLES } from "@/lib/constants";
 
@@ -19,7 +20,7 @@ const vehicles = [
     maxWeight: "300 kg",
     dimensions: "160 × 120 × 120 cm",
     tags: ["Documents", "Packages"],
-    price: 161.60,
+    price: 60.00,
   },
   {
     id: "transporter",
@@ -28,7 +29,7 @@ const vehicles = [
     maxWeight: "1,200 kg",
     dimensions: "430 × 180 × 120 cm",
     tags: ["Large Items"],
-    price: 196.24,
+    price: 60.00,
   },
   {
     id: "koffer",
@@ -37,7 +38,7 @@ const vehicles = [
     maxWeight: "1,200 kg",
     dimensions: "420 × 210 × 210 cm",
     tags: ["Furniture"],
-    price: 224.90,
+    price: 60.00,
   },
   {
     id: "koffer_hebebuehne",
@@ -46,7 +47,7 @@ const vehicles = [
     maxWeight: "1,000 kg",
     dimensions: "420 × 210 × 210 cm",
     tags: ["Heavy Items"],
-    price: 305.88,
+    price: 60.00,
   },
 ];
 
@@ -56,22 +57,32 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
   const getVehiclePrice = (vehicleId: string, fallbackPrice: number) => {
     if (!data.distance) return fallbackPrice.toFixed(2);
     
-    const vehicleMap: Record<string, string> = {
-      pkw_kombi: "car",
-      transporter: "transporter",
-      koffer: "suitcase",
-      koffer_hebebuehne: "suitcase_lift"
-    };
+    const ratePerKm = 1.7; // New fixed rate per km
+    
+    // Calculate distance cost with 60€ minimum for distances <= 40km
+    let total = data.distance * ratePerKm;
+    if (data.distance <= 40) {
+      total = 60;
+    }
+    
+    return total.toFixed(2);
+  };
 
-    const vId = vehicleMap[vehicleId] || "transporter";
-    const vehicleObj = VEHICLES.find(v => v.id === vId) || VEHICLES[1];
-    
-    const ratePerKm = 1.5; // Fixed rate per km
-    const baseFee = vehicleObj.baseFee;
-    const fuelSurcharge = (data.distance * ratePerKm) * 0.12; 
-    const tollFees = 89.00; 
-    
-    return ((data.distance * ratePerKm) + baseFee + fuelSurcharge + tollFees).toFixed(2);
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const dayAfter = new Date(today);
+  dayAfter.setDate(today.getDate() + 2);
+
+  const formatDateLabel = (date: Date) => {
+    const weekday = date.toLocaleDateString("en-US", { weekday: 'long' });
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    return `${weekday} • ${day}.${month}`;
+  };
+  
+  const formatDateValue = (date: Date) => {
+    return date.toISOString().split('T')[0];
   };
 
   return (
@@ -269,36 +280,45 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
         </div>
       </div>
 
-      {/* Date Selection */}
+      {/* Date & Time Selection */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-6">When should we pick up?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <button className="p-4 border-2 border-slate-200 dark:border-slate-700 rounded-xl opacity-50 cursor-not-allowed text-left">
-            <p className="font-semibold text-slate-400">Tomorrow</p>
-            <p className="text-sm text-slate-400">Sunday • 05.04</p>
-            <p className="text-xs text-orange-500 mt-2">Phone booking only</p>
-          </button>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <button 
-            onClick={() => onUpdate({ pickupDate: "2026-04-06" })}
+            onClick={() => onUpdate({ pickupDate: formatDateValue(tomorrow) })}
             className={`p-4 border-2 rounded-xl transition-all text-left ${
-              data.pickupDate === "2026-04-06"
+              data.pickupDate === formatDateValue(tomorrow)
+                ? "border-primary bg-primary/10"
+                : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
+            }`}
+          >
+            <p className="font-semibold">Tomorrow</p>
+            <p className="text-sm text-on-surface-variant font-medium">{formatDateLabel(tomorrow)}</p>
+          </button>
+          
+          <button 
+            onClick={() => onUpdate({ pickupDate: formatDateValue(dayAfter) })}
+            className={`p-4 border-2 rounded-xl transition-all text-left ${
+              data.pickupDate === formatDateValue(dayAfter)
                 ? "border-primary bg-primary/10"
                 : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
             }`}
           >
             <p className="font-semibold">Day After Tomorrow</p>
-            <p className="text-sm text-on-surface-variant">Monday • 06.04</p>
+            <p className="text-sm text-on-surface-variant font-medium">{formatDateLabel(dayAfter)}</p>
           </button>
+
           <div 
             onClick={() => dateInputRef.current?.showPicker()}
             className={`p-4 border-2 rounded-xl transition-all text-left relative overflow-hidden cursor-pointer ${
-              data.pickupDate && data.pickupDate !== "2026-04-06"
+              data.pickupDate && data.pickupDate !== formatDateValue(tomorrow) && data.pickupDate !== formatDateValue(dayAfter)
                 ? "border-primary bg-primary/10"
                 : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
             }`}>
             <span className="material-symbols-outlined text-3xl mb-1 text-primary relative z-10">calendar_today</span>
             <p className="font-semibold relative z-10">Calendar</p>
-            {data.pickupDate && data.pickupDate !== "2026-04-06" && (
+            {data.pickupDate && data.pickupDate !== formatDateValue(tomorrow) && data.pickupDate !== formatDateValue(dayAfter) && (
                 <p className="text-sm text-primary font-bold relative z-10 mt-2">{data.pickupDate}</p>
             )}
             <input 
@@ -311,30 +331,110 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
           </div>
         </div>
 
-        {data.pickupDate && (
+        {/* Time Selection */}
+        <div className="mb-8">
+          <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-lg">schedule</span>
+            Preferred Pickup Window
+          </label>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"].map((time) => (
+              <button
+                key={time}
+                onClick={() => onUpdate({ pickupTime: time })}
+                className={`group relative py-4 px-2 rounded-2xl border-2 transition-all duration-300 flex flex-col items-center gap-1 ${
+                  data.pickupTime === time 
+                    ? "border-primary bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]" 
+                    : "border-slate-100 dark:border-slate-800 hover:border-primary/30 bg-white dark:bg-slate-900"
+                }`}
+              >
+                <span className={`text-xs font-bold uppercase tracking-tighter opacity-60 ${data.pickupTime === time ? 'text-white' : ''}`}>
+                  {parseInt(time) < 12 ? 'Morning' : 'Afternoon'}
+                </span>
+                <span className="text-xl font-black">{time}</span>
+                {data.pickupTime === time && (
+                  <motion.div 
+                    layoutId="time-active"
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900"
+                  >
+                    <span className="material-symbols-outlined text-[12px] font-black">done</span>
+                  </motion.div>
+                )}
+              </button>
+            ))}
+            
+            {/* Custom Time Input */}
+            <div className={`col-span-2 sm:col-span-1 md:col-span-2 relative group rounded-2xl border-2 transition-all duration-300 ${
+              data.pickupTime && !["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"].includes(data.pickupTime)
+                ? "border-primary bg-primary/5 shadow-inner"
+                : "border-slate-100 dark:border-slate-800 border-dashed hover:border-primary/50"
+            }`}>
+              <div className="absolute inset-0 flex items-center px-4 pointer-events-none">
+                <span className={`material-symbols-outlined transition-colors ${
+                  data.pickupTime && !["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"].includes(data.pickupTime)
+                    ? "text-primary"
+                    : "text-slate-400 group-hover:text-primary"
+                }`}>more_time</span>
+                <span className={`ml-2 text-xs font-bold uppercase tracking-tight transition-colors ${
+                  data.pickupTime && !["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"].includes(data.pickupTime)
+                    ? "text-primary"
+                    : "text-slate-400 group-hover:text-primary"
+                }`}>Custom Time</span>
+              </div>
+              <input 
+                type="time" 
+                value={data.pickupTime || ""} 
+                onChange={(e) => onUpdate({ pickupTime: e.target.value })}
+                className="w-full h-full bg-transparent p-4 pl-32 font-black text-lg outline-none cursor-pointer appearance-none text-right pr-6"
+              />
+            </div>
+          </div>
+        </div>
+
+        {data.distance > 0 && (
           <div className="space-y-4">
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-4 text-center">
-              <p className="font-semibold text-green-700 dark:text-green-400">Pickup possible anytime</p>
-              <p className="text-sm text-green-600 dark:text-green-500">Exact pickup time will be set in next steps</p>
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-5">
+              <div className="flex items-center gap-4">
+                 <div className="bg-green-500 text-white p-2 rounded-full flex-shrink-0">
+                    <span className="material-symbols-outlined text-sm">check</span>
+                 </div>
+                 <div>
+                    <p className="font-bold text-green-800 dark:text-green-300">Route verified</p>
+                    <p className="text-sm text-green-700/80 dark:text-green-400/80">Our drivers are available in this area.</p>
+                 </div>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-800 rounded-xl p-4">
-              <div className="text-center">
-                <span className="material-symbols-outlined text-primary mb-1 block">location_on</span>
-                <p className="font-semibold">Pickup</p>
-                <p className="text-sm text-on-surface-variant">{data.pickupDate}</p>
-                <p className="text-xs text-primary font-semibold">Time window follows</p>
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 gap-6 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 opacity-5 -rotate-12 pointer-events-none group-hover:rotate-0 transition-transform duration-700">
+                <span className="material-symbols-outlined text-8xl">local_shipping</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary">directions_car</span>
-                <span className="text-sm font-medium">2h 18min</span>
-                <span className="material-symbols-outlined text-primary">arrow_forward</span>
+
+              <div className="flex-1 text-center md:text-left">
+                <div className="flex items-center gap-2 justify-center md:justify-start mb-1">
+                  <span className="material-symbols-outlined text-primary">location_on</span>
+                  <p className="font-bold">Pickup</p>
+                </div>
+                <p className="text-lg font-black text-slate-700 dark:text-slate-200">{data.pickupDate || 'Select Date'}</p>
+                <p className="text-sm font-bold text-primary mt-1">{data.pickupTime || 'Select Time'}</p>
               </div>
-              <div className="text-center">
-                <span className="material-symbols-outlined text-secondary mb-1 block">near_me</span>
-                <p className="font-semibold">Delivery</p>
-                <p className="text-sm text-on-surface-variant">{data.pickupDate}</p>
-                <p className="text-xs text-secondary">ca. 2h 18min after pickup</p>
+
+              <div className="flex flex-col items-center gap-2 py-4 md:py-0 border-y md:border-y-0 md:border-x border-slate-200 dark:border-slate-700 px-8">
+                <span className="text-xs font-black uppercase tracking-widest text-slate-400">Duration</span>
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary animate-pulse-slow">more_time</span>
+                  <span className="text-2xl font-black text-secondary">{data.duration}</span>
+                </div>
+                <span className="text-[10px] font-bold text-slate-400">Direct Transport</span>
+              </div>
+
+              <div className="flex-1 text-center md:text-right">
+                <div className="flex items-center gap-2 justify-center md:justify-end mb-1">
+                  <p className="font-bold">Delivery</p>
+                  <span className="material-symbols-outlined text-secondary">near_me</span>
+                </div>
+                <p className="text-lg font-black text-slate-700 dark:text-slate-200">{data.pickupDate || 'Select Date'}</p>
+                <p className="text-sm font-bold text-secondary mt-1">ca. {data.duration} after pickup</p>
               </div>
             </div>
           </div>

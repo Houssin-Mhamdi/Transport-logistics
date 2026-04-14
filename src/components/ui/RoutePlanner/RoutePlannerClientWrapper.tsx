@@ -7,7 +7,6 @@ import PricingCard from "./PricingCard";
 import LiveMap from "./LiveMap";
 import RouteOptions from "./RouteOptions";
 import { VEHICLES } from "@/lib/constants";
-import FleetShowcase from "../FleetShowcase";
 
 interface RoutePlannerClientWrapperProps {
   initialRoute: RoutePlan;
@@ -15,17 +14,21 @@ interface RoutePlannerClientWrapperProps {
 
 export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlannerClientWrapperProps) {
   const [route, setRoute] = useState<RoutePlan>(initialRoute);
-  const [isLodingRoute, setIsLoadingRoute] = useState(false);
-
+  const [isLoadingRoute, setIsLoadingRoute] = useState(false);
 
   // Pricing calculation helper
   const calculatePricing = (distance: number, vehicleId: string) => {
-    const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1]; // fallback to transporter
-    const ratePerKm = 1.5; // Fixed rate per km
-    const baseFee = vehicle.baseFee;
-    const fuelSurcharge = (distance * ratePerKm) * 0.12; // 12% surcharge
-    const tollFees = 89.00; // static for now
-    const total = (distance * ratePerKm) + baseFee + fuelSurcharge + tollFees;
+    const ratePerKm = 1.7; // New fixed rate per km
+    
+    // Calculate distance cost with 60€ minimum for distances <= 40km
+    let total = distance * ratePerKm;
+    if (distance <= 40) {
+      total = 60;
+    }
+    
+    const baseFee = 0;
+    const fuelSurcharge = 0;
+    const tollFees = 0;
 
     return {
       ratePerKm,
@@ -103,7 +106,7 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
   return (
     <div className="space-y-6">
       <section className="px-8 max-w-[1920px] mx-auto grid grid-cols-12 gap-6 relative">
-        {isLodingRoute && (
+        {isLoadingRoute && (
            <div className="absolute top-0 left-0 w-full h-1 bg-primary/20 overflow-hidden z-50">
               <div className="h-full bg-primary animate-progress-line" />
            </div>
@@ -122,14 +125,13 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
         </div>
       </section>
 
-      {/* Full Width Fleet Showcase for selection */}
+      {/* Full Width Fleet Showcase section */}
       <div className="px-8 pb-24 max-w-[1920px] mx-auto">
         <div className="bg-surface-container-low p-8 rounded-2xl border border-outline/10 overflow-hidden">
           <h3 className="text-2xl font-black text-primary mb-8 flex items-center gap-3">
             <span className="material-symbols-outlined text-3xl">minor_crash</span>
             Choose Your Delivery Asset
           </h3>
-     
         </div>
       </div>
     </div>

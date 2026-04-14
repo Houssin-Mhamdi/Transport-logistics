@@ -12,8 +12,6 @@ interface PickupStepProps {
 export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupStepProps) {
     const [showStartLocation, setShowStartLocation] = useState(true);
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
-    const [pickupTimeFrom, setPickupTimeFrom] = useState("08:00");
-    const [pickupTimeTo, setPickupTimeTo] = useState("09:00");
 
     const cityValue = data.pickupDetails?.city || "Berlin";
     
@@ -189,38 +187,58 @@ export default function PickupStep({ data, onUpdate, onNext, onBack }: PickupSte
                                 <span className="material-symbols-outlined text-primary text-sm">schedule</span>
                                 <h3 className="font-bold">Desired Pickup Time Window *</h3>
                             </div>
-                            <p className="text-sm text-on-surface-variant mb-4">On April 6, 2026</p>
+                            <p className="text-sm text-on-surface-variant mb-4 font-semibold text-primary">
+                                On {data.pickupDate ? new Date(data.pickupDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : 'April 6, 2026'}
+                            </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs font-semibold mb-2 text-slate-600 dark:text-slate-400">
                                         From (earliest)
                                     </label>
-                                    <input
-                                        type="time"
-                                        value={pickupTimeFrom}
-                                        onChange={(e) => setPickupTimeFrom(e.target.value)}
-                                        className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                    />
+                                    <div className="relative group">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-sm text-slate-400 group-hover:text-primary transition-colors">login</span>
+                                        <input
+                                            type="time"
+                                            value={data.pickupWindow?.from || "08:00"}
+                                            onChange={(e) => onUpdate({
+                                                pickupWindow: { ...(data.pickupWindow || {}), from: e.target.value }
+                                            })}
+                                            className="w-full pl-10 pr-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                        />
+                                    </div>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-semibold mb-2 text-slate-600 dark:text-slate-400">
                                         Until (latest)
                                     </label>
-                                    <input
-                                        type="time"
-                                        value={pickupTimeTo}
-                                        onChange={(e) => setPickupTimeTo(e.target.value)}
-                                        className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                                    />
+                                    <div className="relative group">
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-sm text-slate-400 group-hover:text-secondary transition-colors">logout</span>
+                                        <input
+                                            type="time"
+                                            value={data.pickupWindow?.until || "09:00"}
+                                            onChange={(e) => onUpdate({
+                                                pickupWindow: { ...(data.pickupWindow || {}), until: e.target.value }
+                                            })}
+                                            className="w-full pl-10 pr-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="mt-4 p-4 bg-primary/5 rounded-lg flex items-center gap-2">
-                                <span className="material-symbols-outlined text-primary text-sm">check</span>
-                                <span className="text-sm text-primary font-medium">
-                                    Pickup between {pickupTimeFrom} and {pickupTimeTo}
-                                </span>
+                            <div className="mt-4 p-4 bg-primary/5 rounded-2xl border border-primary/10 flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-primary text-sm font-black">check</span>
+                                    </div>
+                                    <span className="text-sm text-primary font-bold">
+                                        Calculated Window: {(data.pickupWindow?.from || "08:00")} - {(data.pickupWindow?.until || "09:00")}
+                                    </span>
+                                </div>
+                                <div className="hidden sm:flex items-center gap-1 text-[10px] uppercase font-black tracking-widest text-slate-400">
+                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    Availability Confirmed
+                                </div>
                             </div>
                         </div>
 

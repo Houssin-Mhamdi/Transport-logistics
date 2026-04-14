@@ -24,6 +24,10 @@ interface BookingData {
   deliveryCoords?: { lat: number; lng: number };
   selectedVehicle: string;
   pickupDate: string;
+  pickupTime: string;
+  pickupWindow: { from: string; until: string };
+  deliveryDate: string;
+  deliveryWindow: { from: string; until: string };
   distance: number;
   duration: string;
   
@@ -81,6 +85,10 @@ export default function BookingPage() {
     deliveryAddress: "",
     selectedVehicle: "pkw_kombi",
     pickupDate: "",
+    pickupTime: "",
+    pickupWindow: { from: "08:00", until: "09:00" },
+    deliveryDate: "",
+    deliveryWindow: { from: "15:00", until: "16:00" },
     distance: 0,
     duration: "",
     shipments: [
@@ -187,22 +195,15 @@ export default function BookingPage() {
   const calculatePriceValue = () => {
     if (bookingData.distance === 0) return 0;
     
-    const vehicleMap: Record<string, string> = {
-      pkw_kombi: "car",
-      transporter: "transporter",
-      koffer: "suitcase",
-      koffer_hebebuehne: "suitcase_lift"
-    };
-
-    const vehicleId = vehicleMap[bookingData.selectedVehicle] || "transporter";
-    const vehicle = VEHICLES.find(v => v.id === vehicleId) || VEHICLES[1];
+    const ratePerKm = 1.7; // New fixed rate per km
     
-    const ratePerKm = 1.5; // Fixed rate per km
-    const baseFee = vehicle.baseFee;
-    const fuelSurcharge = (bookingData.distance * ratePerKm) * 0.12; 
-    const tollFees = 89.00; 
+    // Calculate distance cost with 60€ minimum for distances <= 40km
+    let total = bookingData.distance * ratePerKm;
+    if (bookingData.distance <= 40) {
+      total = 60;
+    }
     
-    return (bookingData.distance * ratePerKm) + baseFee + fuelSurcharge + tollFees;
+    return total;
   };
 
   const calculatePrice = () => {

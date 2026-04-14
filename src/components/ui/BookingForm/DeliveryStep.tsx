@@ -12,9 +12,6 @@ interface DeliveryStepProps {
 export default function DeliveryStep({ data, onUpdate, onNext, onBack }: DeliveryStepProps) {
   const [showDestination, setShowDestination] = useState(true);
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
-  const [deliveryTimeFrom, setDeliveryTimeFrom] = useState("15:00");
-  const [deliveryTimeTo, setDeliveryTimeTo] = useState("16:00");
-  const [deliveryDate, setDeliveryDate] = useState("2026-04-13");
 
   const cityValue = data.deliveryDetails?.city || "Cologne";
 
@@ -224,7 +221,7 @@ export default function DeliveryStep({ data, onUpdate, onNext, onBack }: Deliver
             </div>
 
             {/* Delivery Date & Time Window */}
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">event</span>
                 <h3 className="font-bold text-green-800 dark:text-green-300">
@@ -233,24 +230,25 @@ export default function DeliveryStep({ data, onUpdate, onNext, onBack }: Deliver
               </div>
               
               {/* Transit Time Info */}
-              <p className="text-sm text-green-700 dark:text-green-400 mb-4">
-                Transit time: 6 hrs 8 min
-              </p>
+              <div className="flex items-center gap-2 text-sm text-green-700/80 dark:text-green-400/80 mb-6 bg-white/50 dark:bg-black/20 w-fit px-3 py-1 rounded-full border border-green-200/50 dark:border-green-800/50">
+                <span className="material-symbols-outlined text-xs">timer</span>
+                <span>Calculated transit time: {data.duration}</span>
+              </div>
 
               {/* Date Selection */}
-              <div className="mb-4">
-                <label className="block text-xs font-semibold mb-2 text-green-800 dark:text-green-300">
+              <div className="mb-6">
+                <label className="block text-xs font-black uppercase tracking-widest mb-2 text-green-800/60 dark:text-green-300/60">
                   Delivery Date
                 </label>
-                <div className="relative">
-                  <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                <div className="relative group">
+                  <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-green-500 group-focus-within:text-green-600 transition-colors">
                     calendar_today
                   </span>
                   <input
                     type="date"
-                    value={deliveryDate}
-                    onChange={(e) => setDeliveryDate(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 border border-green-200 dark:border-green-800 rounded-lg focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none bg-white dark:bg-slate-900"
+                    value={data.deliveryDate || ""}
+                    onChange={(e) => onUpdate({ deliveryDate: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 border border-green-200 dark:border-green-800 rounded-xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none bg-white dark:bg-slate-900 transition-all font-bold"
                   />
                 </div>
               </div>
@@ -258,36 +256,55 @@ export default function DeliveryStep({ data, onUpdate, onNext, onBack }: Deliver
               {/* Time Window */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold mb-2 text-green-800 dark:text-green-300">
+                  <label className="block text-xs font-black uppercase tracking-widest mb-2 text-green-800/60 dark:text-green-300/60">
                     From (earliest)
                   </label>
-                  <input
-                    type="time"
-                    value={deliveryTimeFrom}
-                    onChange={(e) => setDeliveryTimeFrom(e.target.value)}
-                    className="w-full px-4 py-3 border border-green-200 dark:border-green-800 rounded-lg focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none bg-white dark:bg-slate-900"
-                  />
+                  <div className="relative group">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-green-500 group-focus-within:text-green-600 transition-colors">login</span>
+                    <input
+                      type="time"
+                      value={data.deliveryWindow?.from || "15:00"}
+                      onChange={(e) => onUpdate({
+                        deliveryWindow: { ...(data.deliveryWindow || {}), from: e.target.value }
+                      })}
+                      className="w-full pl-12 pr-4 py-3 border border-green-200 dark:border-green-800 rounded-xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none bg-white dark:bg-slate-900 transition-all font-bold"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold mb-2 text-green-800 dark:text-green-300">
+                  <label className="block text-xs font-black uppercase tracking-widest mb-2 text-green-800/60 dark:text-green-300/60">
                     Until (latest)
                   </label>
-                  <input
-                    type="time"
-                    value={deliveryTimeTo}
-                    onChange={(e) => setDeliveryTimeTo(e.target.value)}
-                    className="w-full px-4 py-3 border border-green-200 dark:border-green-800 rounded-lg focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none bg-white dark:bg-slate-900"
-                  />
+                  <div className="relative group">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-green-500 group-focus-within:text-green-600 transition-colors">logout</span>
+                    <input
+                      type="time"
+                      value={data.deliveryWindow?.until || "16:00"}
+                      onChange={(e) => onUpdate({
+                        deliveryWindow: { ...(data.deliveryWindow || {}), until: e.target.value }
+                      })}
+                      className="w-full pl-12 pr-4 py-3 border border-green-200 dark:border-green-800 rounded-xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none bg-white dark:bg-slate-900 transition-all font-bold"
+                    />
+                  </div>
                 </div>
               </div>
 
               {/* Confirmation */}
-              <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/40 rounded-lg flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">check</span>
-                <span className="text-sm text-green-700 dark:text-green-300 font-medium">
-                  Delivery on {new Date(deliveryDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} between {deliveryTimeFrom} and {deliveryTimeTo}
-                </span>
-              </div>
+              {data.deliveryDate && (
+                <div className="mt-6 p-4 bg-green-500 text-white rounded-2xl shadow-lg shadow-green-500/20 flex items-center justify-between overflow-hidden relative">
+                  <div className="absolute -right-4 -bottom-4 opacity-10 rotate-12">
+                    <span className="material-symbols-outlined text-6xl">verified</span>
+                  </div>
+                  <div className="flex items-center gap-3 relative z-10">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-sm font-black">check</span>
+                    </div>
+                    <span className="text-sm font-bold">
+                      Arrival: {new Date(data.deliveryDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {data.deliveryWindow?.from || "15:00"}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Contact for Questions */}
@@ -336,6 +353,99 @@ export default function DeliveryStep({ data, onUpdate, onNext, onBack }: Deliver
           </div>
         )}
       </div>
+      
+      {/* Extra Deliveries */}
+      {data.extraDeliveries?.map((delivery: any, index: number) => {
+        const details = delivery.details || {};
+        const updateDetails = (updates: any) => {
+          const newList = [...data.extraDeliveries];
+          newList[index] = { ...newList[index], details: { ...newList[index].details, ...updates } };
+          onUpdate({ extraDeliveries: newList });
+        };
+
+        return (
+          <div key={`extra-delivery-${index}`} className="mt-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            <div className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-secondary text-sm">near_me</span>
+                </div>
+                <div>
+                    <span className="font-bold block">Delivery Stop {index + 1}</span>
+                    <span className="text-sm text-on-surface-variant">{delivery.address || 'Address'}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-8">
+              {/* Contact Person */}
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="material-symbols-outlined text-primary text-sm">person</span>
+                  <h3 className="font-bold">Contact Person</h3>
+                </div>
+                <div className="mb-4">
+                  <input
+                    type="text"
+                    placeholder="Company (optional)"
+                    className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none bg-slate-50 dark:bg-slate-800"
+                    value={details.company || ""}
+                    onChange={(e) => updateDetails({ company: e.target.value })}
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="First Name *"
+                      className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                      value={details.firstName || ""}
+                      onChange={(e) => updateDetails({ firstName: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Last Name *"
+                      className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                      value={details.lastName || ""}
+                      onChange={(e) => updateDetails({ lastName: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Address Details */}
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="material-symbols-outlined text-secondary text-sm">location_on</span>
+                  <h3 className="font-bold">Exact Address Details</h3>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="md:col-span-2">
+                    <input
+                      type="text"
+                      placeholder="Street *"
+                      className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                      value={details.street || ""}
+                      onChange={(e) => updateDetails({ street: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="No. *"
+                      className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                      value={details.number || ""}
+                      onChange={(e) => updateDetails({ number: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
 
       {/* Navigation Buttons */}
       <div className="flex gap-4 mt-8">

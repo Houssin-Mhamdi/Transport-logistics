@@ -78,11 +78,11 @@ export const DEFAULT_ROUTE: RoutePlan = {
   congestionIndex: 12,
   vehicleType: "transporter",
   pricing: {
-    ratePerKm: 0.85,
-    baseFee: 50,
-    fuelSurcharge: 120, // (1248.5 * 0.85 * 0.12) roughly
-    tollFees: 89.00,
-    total: 1320.225, // (1248.5 * 0.85) + 50 + 120 + 89
+    ratePerKm: 1.7,
+    baseFee: 0,
+    fuelSurcharge: 0,
+    tollFees: 0,
+    total: 2122.45, // 1248.5 * 1.7
     currency: "EUR",
     validUntil: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
   },
@@ -94,8 +94,8 @@ export const VEHICLES = [
   {
     id: "car",
     name: "Car Station Wagon",
-    baseRate: 0.45,
-    baseFee: 20,
+    baseRate: 1.7,
+    baseFee: 0,
     icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZ2s6ShBMBJlEA5IjLuJPOF5unVBF1DI05D8A8MQhRd4o131KSCqiJy5KxirevqvTneVi5lKK87jGESp2xoO-WLJhImLDknbXHhH-h0rf0gvdMJdiPTqQV6Urk12m2WZ4jV3Uq7bDFHr-jlkVD0GxCY0KYRpmfOume6jMd1Wpy1SzVzfCnreonnMZn8LVPj4N2sXdD01tG1jdsOLHAdNHRfP0X8Mh1cVnGrD3rRBNbnYvhrSyGj7IoRyPPiCnZpew09XuIlXJj8VSx",
     capacity: "450 kg",
     dimensions: "180x110x90 cm"
@@ -103,8 +103,8 @@ export const VEHICLES = [
   {
     id: "transporter",
     name: "Transporter",
-    baseRate: 0.85,
-    baseFee: 50,
+    baseRate: 1.7,
+    baseFee: 0,
     icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9tGK_s7QJ9-y8RoM8lQXediFS9IbJexJaiZvpn-sOxd2FH9ozJCqtmDOorCWYAV9Yyg43rq6OwaQVvRoOsvaixl1vrnxEhCYMP3lbZ9rfG2DGRgYtI2HhNY7UQUYVNc4riF2AxsZH6-8RRpBf_lxjz2VeKO-Hoe3x8D6pVw7P4VJuDZW2sT16DGt1U6pQL_2U-UUyAbWEmxbhFAvMKYYA6ZR5QzGIY3ZfHs7MN7cS5Wj4e8Rp6IKc9UDVzyvYJagbzI9SZ56eCscW",
     capacity: "1,200 kg",
     dimensions: "430x180x120 cm"
@@ -112,8 +112,8 @@ export const VEHICLES = [
   {
     id: "suitcase",
     name: "Suitcase Truck",
-    baseRate: 1.5,
-    baseFee: 120,
+    baseRate: 1.7,
+    baseFee: 0,
     icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAC9AB93-yP48F31YNfx6CiGw7kGwDYaABYulpvbiILIqGd22wAOptps_hS0Dps4i9IiOb_LfDgro8_NN8tAbQMAyKmKfQDHM_Ezwf8MNXZDMuqCImeRFvznxEyWsLGr2G_xej3uRhUA6-9a2DrjRzfK7V1EIh16-iB7hlv--S0pE8eE0n5XWNuPSZsLXV_fx4LDvF84WLd1FPSvTgKKRZxJwc1MJgw_4JLObChrEb3mP9W6avGISNSGo_XXg5srkl13iHxphTE-Z8",
     capacity: "3,500 kg",
     dimensions: "610x240x240 cm"
@@ -121,8 +121,8 @@ export const VEHICLES = [
   {
     id: "suitcase_lift",
     name: "Suitcase (Lifting Platform)",
-    baseRate: 2.1,
-    baseFee: 200,
+    baseRate: 1.7,
+    baseFee: 0,
     icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuAP6AKj83kCxgbZ7vXzBuInmPqEN-m0CY-WaEtVk3AcnCFZ9na50B4fjseQUBeEfYhjS3zfRy5nqo8scsnq5VVdANjcok_u_Za0_rHzFqCVI_WmGzebvqTRgmjEinWMyb9JdTj_Vt6y7mn7_LeixX-mpnXWOUrL6yAlg5fWLo7fFbCOl5ymWhsyDqlJc__OQljPbhKVtUES2MfA4XzCUdkmWD4a7Vy4Y04_4AV9U5R6YffbJHMonWw6YjoNi6lx7CZFj_QOlH4vlCSY",
     capacity: "5,000 kg",
     dimensions: "Integrated Lift"

@@ -86,31 +86,16 @@ export default function PricingCard({ route, onBook, onVehicleChange }: PricingC
           <span className="text-xl font-black">{formatCurrency(pricing.ratePerKm, pricing.currency)}</span>
         </div>
         <div className="flex justify-between items-center pb-4 border-b border-white/10">
-          <span className="text-white/70 font-medium">Distance Cost</span>
-          <span className="text-xl font-black">{formatCurrency(route.totalDistance * pricing.ratePerKm, pricing.currency)}</span>
-        </div>
-
-        {/* Additional Fees */}
-        <div className="flex justify-between items-center text-sm pb-1 text-white/50">
-          <span>Base Fee</span>
-          <span>{formatCurrency(pricing.baseFee, pricing.currency)}</span>
-        </div>
-        <div className="flex justify-between items-center text-sm pb-1 text-white/50">
-          <span>Fuel Surcharge (12%)</span>
-          <span>{formatCurrency(pricing.fuelSurcharge, pricing.currency)}</span>
-        </div>
-        <div className="flex justify-between items-center text-sm pb-4 border-b border-white/10 text-white/50">
-          <span>Toll Fees (Estim.)</span>
-          <span>{formatCurrency(pricing.tollFees, pricing.currency)}</span>
+          <span className="text-white/70 font-medium">Calculation Model</span>
+          <span className="text-sm font-bold opacity-60">
+            {route.totalDistance <= 40 ? "Minimum Flat Rate" : "Standard Distance Rate"}
+          </span>
         </div>
 
         <div className="flex justify-between items-center pt-2">
           <span className="text-white/70 font-medium text-lg">Total Price</span>
           <span className="text-3xl font-black text-secondary-container tracking-tighter">
-            {formatCurrency(
-              (route.totalDistance * pricing.ratePerKm) + pricing.baseFee + pricing.fuelSurcharge + pricing.tollFees,
-              pricing.currency
-            )}
+            {formatCurrency(pricing.total, pricing.currency)}
           </span>
         </div>
       </div>
@@ -125,7 +110,7 @@ export default function PricingCard({ route, onBook, onVehicleChange }: PricingC
       </button>
 
       <p className="text-center mt-4 text-xs text-white/50 font-medium">
-        Estimate valid for 24 hours. Includes fuel surcharges and toll fees.
+        Estimate valid for 24 hours. Price based on distance (Min. 60€ for ≤ 40km).
       </p>
     </div>
   );
