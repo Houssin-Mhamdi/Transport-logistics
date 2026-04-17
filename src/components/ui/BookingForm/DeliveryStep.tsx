@@ -21,20 +21,22 @@ export default function DeliveryStep({ data, onUpdate, onNext, onBack }: Deliver
                          data.deliveryDetails?.street && 
                          data.deliveryDetails?.number && 
                          data.deliveryDetails?.postalCode && 
-                         cityValue
+                         cityValue &&
+                         data.deliveryDate
   );
 
   // Calculate delivery date based on pickup + transit time
-  // const getDeliveryDateDisplay = () => {
-  //   const date = new Date(deliveryDate);
-  //   const options: Intl.DateTimeFormatOptions = { 
-  //     weekday: 'long', 
-  //     year: 'numeric', 
-  //     month: 'long', 
-  //     day: 'numeric' 
-  //   };
-  //   return date.toLocaleDateString('en-US', options);
-  // };
+  const getDeliveryDateDisplay = () => {
+    if (!data.deliveryDate) return "";
+    const date = new Date(data.deliveryDate);
+    const options: Intl.DateTimeFormatOptions = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    return date.toLocaleDateString('en-US', options);
+  };
 
   return (
     <div className="max-w-4xl mx-auto">

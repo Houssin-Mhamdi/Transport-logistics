@@ -282,7 +282,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
 
       {/* Date & Time Selection */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
-        <h2 className="text-2xl font-bold mb-6">When should we pick up?</h2>
+        <h2 className="text-2xl font-bold mb-6">When should we pick up? *</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <button 
@@ -326,6 +326,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
                type="date" 
                className="absolute bottom-0 left-0 opacity-0 w-0 h-0 pointer-events-none"
                value={data.pickupDate || ""}
+               min={formatDateValue(today)}
                onChange={(e) => onUpdate({ pickupDate: e.target.value })}
             />
           </div>
@@ -335,7 +336,7 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
         <div className="mb-8">
           <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary text-lg">schedule</span>
-            Preferred Pickup Window
+            Preferred Pickup Window *
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"].map((time) => (
@@ -444,7 +445,13 @@ export default function RouteStep({ data, onUpdate, onNext, price }: RouteStepPr
       {/* Action Buttons */}
       <button
         onClick={onNext}
-        disabled={!data.pickupAddress || !data.deliveryAddress}
+        disabled={
+          !data.pickupAddress || 
+          !data.deliveryAddress || 
+          !data.selectedVehicle || 
+          !data.pickupDate || 
+          !data.pickupTime
+        }
         className="w-full py-5 bg-primary hover:bg-primary-hover disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold text-lg rounded-xl shadow-xl shadow-primary/20 transition-all active:scale-[0.98]"
       >
         Continue to Shipment
