@@ -19,13 +19,13 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
   // Pricing calculation helper
   const calculatePricing = (distance: number, vehicleId: string) => {
     const ratePerKm = 1.7; // New fixed rate per km
-    
+
     // Calculate distance cost with 60€ minimum for distances <= 40km
     let total = distance * ratePerKm;
     if (distance <= 40) {
       total = 60;
     }
-    
+
     const baseFee = 0;
     const fuelSurcharge = 0;
     const tollFees = 0;
@@ -55,7 +55,7 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
 
       if (namedPoints.length < 2) {
         if (route.totalDistance !== 0) {
-           setRoute(prev => ({ ...prev, totalDistance: 0 }));
+          setRoute(prev => ({ ...prev, totalDistance: 0 }));
         }
         return;
       }
@@ -73,7 +73,7 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
         if (data.routes && data.routes[0]) {
           const distanceInKm = data.routes[0].distance / 1000;
           const newDistance = parseFloat(distanceInKm.toFixed(2));
-          
+
           setRoute(prev => ({
             ...prev,
             totalDistance: newDistance,
@@ -107,11 +107,11 @@ export default function RoutePlannerClientWrapper({ initialRoute }: RoutePlanner
     <div className="space-y-6">
       <section className="px-8 max-w-[1920px] mx-auto grid grid-cols-12 gap-6 relative">
         {isLoadingRoute && (
-           <div className="absolute top-0 left-0 w-full h-1 bg-primary/20 overflow-hidden z-50">
-              <div className="h-full bg-primary animate-progress-line" />
-           </div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-primary/20 overflow-hidden z-50">
+            <div className="h-full bg-primary animate-progress-line" />
+          </div>
         )}
-        
+
         {/* Left Column: Pricing (Top) + Inputs */}
         <div className="col-span-12 lg:col-span-4 space-y-6">
           <RouteInputs route={route} onChange={handleRouteChange} />

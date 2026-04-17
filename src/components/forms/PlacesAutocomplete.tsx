@@ -63,11 +63,12 @@ export default function PlacesAutocomplete({
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&addressdetails=1`
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=6&addressdetails=1&accept-language=en,de`,
+          { headers: { 'Accept-Language': 'en,de' } }
         );
         const data = await response.json();
         setSuggestions(data || []);
-        setIsOpen(true);
+        setIsOpen(data?.length > 0);
       } catch (error) {
         console.error("Error fetching places:", error);
         setSuggestions([]);
@@ -86,8 +87,11 @@ export default function PlacesAutocomplete({
       lat: parseFloat(place.lat), 
       lng: parseFloat(place.lon) 
     };
+    // Use a shortened display name for better UX
+    const shortName = place.display_name.split(',').slice(0, 3).join(',');
     setQuery(place.display_name);
     onChange(place.display_name, coords);
+    setSuggestions([]);
     setIsOpen(false);
   };
 

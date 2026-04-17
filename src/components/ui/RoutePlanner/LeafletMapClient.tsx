@@ -112,8 +112,8 @@ function LocationSearch({ onSelect, placeholder = "Search location..." }: Locati
                 `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=5`
             );
             const data = await response.json();
-            setResults(data);
-            setIsOpen(true);
+            setResults(data || []);
+            setIsOpen((data || []).length > 0);
         } catch (error) {
             console.error("Search error:", error);
             setResults([]);
@@ -299,7 +299,7 @@ export default function LeafletMapClient({ route }: LeafletMapClientProps) {
                 <MapController center={mapCenter} zoom={mapZoom} shouldFlyTo={shouldFlyTo} />
 
                 <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
